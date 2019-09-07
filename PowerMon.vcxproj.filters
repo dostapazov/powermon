@@ -1,0 +1,803 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Distribution Files">
+      <UniqueIdentifier>{B83CAF91-C7BF-462F-B76C-EA11631F866C}</UniqueIdentifier>
+      <Extensions>*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Distribution Files">
+      <UniqueIdentifier>{B83CAF91-C7BF-462F-B76C-EA11631F866C}</UniqueIdentifier>
+      <Extensions>*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\qtshared\crc\crc_unit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\qtshared\ftdidevice\ftdidevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\qtshared\ftdidevice\ftdilib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\qtshared\multi_iodev\miodevworker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\qtshared\multi_iodev\multi_iodev.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\qtshared\multi_iodev\mutli_iodev_params.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\qtshared\dev_proto\proto_sync.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\qtshared\text_viewer_widget\qtextviewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\reportcommon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrm_connectivity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmbasewidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmcalibrate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmcellview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmchannelmimimal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmconnectivityparam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\zrmdatabase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\zrmdatasource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmdevmethods.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmmaindisplay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmmethodbase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\zrmmethodchoose.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\zrmmethodeditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\zrmmethodeditor_write.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\zrmmethodminmax.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\zrmmethodstree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmmodule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmmonitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmparamsview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmproto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmreadyaccum.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmreadylayout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmreadywidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmrelaybase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmreport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\zrmreportdatabase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\zrmstageschart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\zrmstageseditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zrm\zrmwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\qtshared\crc\crc_unit.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\qtshared\dev_proto\dev_proto.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\qtshared\ftdidevice\ftd2xx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="..\qtshared\ftdidevice\ftdidevice.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="..\qtshared\ftdidevice\ftdilib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="mainwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\qtshared\multi_iodev\miodevworker.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\qtshared\multi_iodev\multi_iodev.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\qtshared\multi_iodev\mutli_iodev_params.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\qtshared\text_viewer_widget\qtextviewer.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="data\reportcommon.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="..\qtshared\inc\signal_bloker.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="zrm\zrm_connectivity.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmbasewidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmcalibrate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmcellview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmchannelmimimal.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmconnectivityparam.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="data\zrmdatabase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="data\zrmdatasource.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmdevmethods.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmmaindisplay.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmmethodbase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="data\zrmmethodchoose.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="data\zrmmethodeditor.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="data\zrmmethodminmax.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="data\zrmmethodstree.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="zrm\zrmmodule.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="zrm\zrmmonitor.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmparamsview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="zrm\zrmproto.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="zrm\zrmreadyaccum.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmreadylayout.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmreadywidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmrelaybase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmreport.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="data\zrmreportdatabase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="data\zrmstageseditor.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="zrm\zrmwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="objs\moc\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="ui_mainwindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_mutli_iodev_params.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_reportcommon.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmcalibrate.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmcellview.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmchannelmimimal.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmconnectivityparam.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmdevmethods.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmmaindisplay.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmmethodbase.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmmethodchoose.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmmethodeditor.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmmethodminmax.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmmethodstree.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmmonitor.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmparamsview.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmreadywidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmrelaybase.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmreport.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmstageseditor.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_zrmwidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="..\qtshared\multi_iodev\mutli_iodev_params.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="data\reportcommon.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmcalibrate.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmcellview.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmchannelmimimal.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmconnectivityparam.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmdevmethods.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmmaindisplay.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmmethodbase.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="data\zrmmethodchoose.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="data\zrmmethodeditor.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="data\zrmmethodminmax.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="data\zrmmethodstree.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmmonitor.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmparamsview.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmreadywidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmrelaybase.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmreport.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="data\zrmstageseditor.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="zrm\zrmwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\qtshared\multi_iodev\SERIAL.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\qtshared\multi_iodev\USB.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\about.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\additional.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\sounds\alarm.wav">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\qtshared\multi_iodev\apply.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\apply.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\arrow_down.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\arrow_down.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\arrow_up.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\arrow_up.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\battery.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\blockdevice.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\chan_add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\chan_remove.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\charge.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\check.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\checkbox_checked.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\checkbox_checked_disabled.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\checkbox_checked_focus.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\checkbox_unchecked.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\checkbox_unchecked_disabled.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\checkbox_unchecked_focus.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\cmethods.db3">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\conn_add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\conn_remove.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\control_pause.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\copy_model.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\current_in.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\current_out.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\decor.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\delete.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\discharge.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\edit.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\equalizer.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\exit-1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\hardware.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\html.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\icons8-car-battery-64.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\impulse.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\kfouleggs.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\ledblue.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\ledgreen.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\ledpurple.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\ledred.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\ledyellow.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\left.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\left.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\link.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\maximize.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\meter-1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\meter-1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\meter-2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\method.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\method_editor.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\minimize.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\minus.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\modeI.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\modeIstab.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\modeU.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\modeUstab.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\mon-clear.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\monitor.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="..\qtshared\multi_iodev\multi_iodev_params.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="zrm\icons\navigate-down.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\navigate-up.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\network-idle.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\network-offline.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\network-receive.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\network-transmit.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\new.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\new_child.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\new_minion-1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\new_minion-2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\new_minion.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\new_user.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\pause-1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\pinball.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\plus.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\pmethods.db3">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\powermon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="powermon.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="zrm\icons\relay_off.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\relay_on.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\report-1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\report.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\report.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\report_save.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\right.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\right.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\save.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\save_pdf.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\settings-2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\start.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\start_all.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\stop.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\stop_all.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\style-1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\style.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\svcreports.db3">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\system-users.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\table1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\table2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\qtshared\multi_iodev\tcp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\qtshared\multi_iodev\udp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\qtshared\multi_iodev\undo.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\icons\undo.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\icons\undo.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\view_multicolumn.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="data\zrm_data.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="zrm\files\zrm_errors.txt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zrm\files\zrm_modes.txt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="zrm\zrm_resource.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="zrm\style\zrm_style.qss">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="android\AndroidManifest.xml">
+      <Filter>Distribution Files</Filter>
+    </None>
+    <None Include="android\build.gradle">
+      <Filter>Distribution Files</Filter>
+    </None>
+    <None Include="android\gradle\wrapper\gradle-wrapper.jar">
+      <Filter>Distribution Files</Filter>
+    </None>
+    <None Include="android\gradle\wrapper\gradle-wrapper.properties">
+      <Filter>Distribution Files</Filter>
+    </None>
+    <None Include="android\gradlew.bat">
+      <Filter>Distribution Files</Filter>
+    </None>
+    <None Include="android\gradlew">
+      <Filter>Distribution Files</Filter>
+    </None>
+    <None Include="android\res\values\libs.xml">
+      <Filter>Distribution Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include=".\powermon64_resource.rc" />
+  </ItemGroup>
+</Project>

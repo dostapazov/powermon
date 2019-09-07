@@ -1,0 +1,583 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7AEB3D75-4CD7-39FE-BD76-A9E4796B58EF}</ProjectGuid>
+    <RootNamespace>powermon64</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.17763.0</WindowsTargetPlatformMinVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v142</PlatformToolset>
+    <OutputDirectory>bin\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>objs\</IntermediateDirectory>
+    <PrimaryOutput>powermon64</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v142</PlatformToolset>
+    <OutputDirectory>bin\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>objs\</IntermediateDirectory>
+    <PrimaryOutput>powermon64</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
+    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">powermon64</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">powermon64</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;..\qtshared\crc;..\qtshared\multi_iodev;..\qtshared\ftdidevice;..\qtshared\dev_proto;..\qtshared\text_viewer_widget;..\qtshared\inc;zrm;data;$(QTDIR)\include;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtSerialPort;$(QTDIR)\include\QtCore;objs\moc;\include;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>objs\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;MULTI_IODEV_CONFIG_WIDGET;QFTDIDEVICE;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(QTDIR)\lib\Qt5Charts.lib;$(QTDIR)\lib\Qt5PrintSupport.lib;$(QTDIR)\lib\Qt5Widgets.lib;$(QTDIR)\lib\Qt5Multimedia.lib;$(QTDIR)\lib\Qt5Gui.lib;$(QTDIR)\lib\Qt5Network.lib;$(QTDIR)\lib\Qt5Sql.lib;$(QTDIR)\lib\Qt5SerialPort.lib;$(QTDIR)\lib\Qt5Core.lib;$(QTDIR)\lib\qtmain.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;C:\openssl\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\powermon64.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <Version>2.1</Version>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;MULTI_IODEV_CONFIG_WIDGET;QFTDIDEVICE;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <InputFile>%(FullPath)</InputFile>
+      <OutputFile>objs\moc\moc_%(Filename).cpp</OutputFile>
+      <Define>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;MULTI_IODEV_CONFIG_WIDGET;QFTDIDEVICE;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB</Define>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./objs/moc/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\mkspecs/win32-msvc;.;D:/projects/qtshared/crc;D:/projects/qtshared/multi_iodev;D:/projects/qtshared/ftdidevice;D:/projects/qtshared/dev_proto;D:/projects/qtshared/text_viewer_widget;D:/projects/qtshared/inc;./zrm;./data;$(QTDIR)\include;$(QTDIR)\include/QtCharts;$(QTDIR)\include/QtPrintSupport;$(QTDIR)\include/QtWidgets;$(QTDIR)\include/QtMultimedia;$(QTDIR)\include/QtGui;$(QTDIR)\include/QtANGLE;$(QTDIR)\include/QtNetwork;$(QTDIR)\include/QtSql;$(QTDIR)\include/QtSerialPort;$(QTDIR)\include/QtCore;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt;C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared;C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt;C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt</IncludePath>
+    </QtMoc>
+    <QtRcc>
+      <OutputFile>$(Configuration)\qrc_%(Filename).cpp</OutputFile>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <Compression>default</Compression>
+      <InputFile>%(FullPath)</InputFile>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+    </QtRcc>
+    <QtUic>
+      <InputFile>%(FullPath)</InputFile>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+    </QtUic>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;..\qtshared\crc;..\qtshared\multi_iodev;..\qtshared\ftdidevice;..\qtshared\dev_proto;..\qtshared\text_viewer_widget;..\qtshared\inc;zrm;data;$(QTDIR)\include;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtSerialPort;$(QTDIR)\include\QtCore;objs\moc;\include;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>objs\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;MULTI_IODEV_CONFIG_WIDGET;QFTDIDEVICE;QT_DEPRECATED_WARNINGS;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(QTDIR)\lib\Qt5Chartsd.lib;$(QTDIR)\lib\Qt5PrintSupportd.lib;$(QTDIR)\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\Qt5Multimediad.lib;$(QTDIR)\lib\Qt5Guid.lib;$(QTDIR)\lib\Qt5Networkd.lib;$(QTDIR)\lib\Qt5Sqld.lib;$(QTDIR)\lib\Qt5SerialPortd.lib;$(QTDIR)\lib\Qt5Cored.lib;$(QTDIR)\lib\qtmaind.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;C:\openssl\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\powermon64.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <Version>2.1</Version>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;MULTI_IODEV_CONFIG_WIDGET;QFTDIDEVICE;QT_DEPRECATED_WARNINGS;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <InputFile>%(FullPath)</InputFile>
+      <OutputFile>objs\moc\moc_%(Filename).cpp</OutputFile>
+      <Define>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;MULTI_IODEV_CONFIG_WIDGET;QFTDIDEVICE;QT_DEPRECATED_WARNINGS;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_SERIALPORT_LIB;QT_CORE_LIB</Define>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./objs/moc/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\mkspecs/win32-msvc;.;D:/projects/qtshared/crc;D:/projects/qtshared/multi_iodev;D:/projects/qtshared/ftdidevice;D:/projects/qtshared/dev_proto;D:/projects/qtshared/text_viewer_widget;D:/projects/qtshared/inc;./zrm;./data;$(QTDIR)\include;$(QTDIR)\include/QtCharts;$(QTDIR)\include/QtPrintSupport;$(QTDIR)\include/QtWidgets;$(QTDIR)\include/QtMultimedia;$(QTDIR)\include/QtGui;$(QTDIR)\include/QtANGLE;$(QTDIR)\include/QtNetwork;$(QTDIR)\include/QtSql;$(QTDIR)\include/QtSerialPort;$(QTDIR)\include/QtCore;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt;C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared;C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt;C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt</IncludePath>
+    </QtMoc>
+    <QtRcc>
+      <Compression>default</Compression>
+      <OutputFile>$(Configuration)\qrc_%(Filename).cpp</OutputFile>
+      <InputFile>%(FullPath)</InputFile>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+    </QtRcc>
+    <QtUic>
+      <InputFile>%(FullPath)</InputFile>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+    </QtUic>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\qtshared\crc\crc_unit.cpp" />
+    <ClCompile Include="..\qtshared\ftdidevice\ftdidevice.cpp" />
+    <ClCompile Include="..\qtshared\ftdidevice\ftdilib.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="..\qtshared\multi_iodev\miodevworker.cpp" />
+    <ClCompile Include="..\qtshared\multi_iodev\multi_iodev.cpp" />
+    <ClCompile Include="..\qtshared\multi_iodev\mutli_iodev_params.cpp" />
+    <ClCompile Include="..\qtshared\dev_proto\proto_sync.cpp" />
+    <ClCompile Include="..\qtshared\text_viewer_widget\qtextviewer.cpp" />
+    <ClCompile Include="data\reportcommon.cpp" />
+    <ClCompile Include="zrm\zrm_connectivity.cpp" />
+    <ClCompile Include="zrm\zrmbasewidget.cpp" />
+    <ClCompile Include="zrm\zrmcalibrate.cpp" />
+    <ClCompile Include="zrm\zrmcellview.cpp" />
+    <ClCompile Include="zrm\zrmchannelmimimal.cpp" />
+    <ClCompile Include="zrm\zrmconnectivityparam.cpp" />
+    <ClCompile Include="data\zrmdatabase.cpp" />
+    <ClCompile Include="data\zrmdatasource.cpp" />
+    <ClCompile Include="zrm\zrmdevmethods.cpp" />
+    <ClCompile Include="zrm\zrmmaindisplay.cpp" />
+    <ClCompile Include="zrm\zrmmethodbase.cpp" />
+    <ClCompile Include="data\zrmmethodchoose.cpp" />
+    <ClCompile Include="data\zrmmethodeditor.cpp" />
+    <ClCompile Include="data\zrmmethodeditor_write.cpp" />
+    <ClCompile Include="data\zrmmethodminmax.cpp" />
+    <ClCompile Include="data\zrmmethodstree.cpp" />
+    <ClCompile Include="zrm\zrmmodule.cpp" />
+    <ClCompile Include="zrm\zrmmonitor.cpp" />
+    <ClCompile Include="zrm\zrmparamsview.cpp" />
+    <ClCompile Include="zrm\zrmproto.cpp" />
+    <ClCompile Include="zrm\zrmreadyaccum.cpp" />
+    <ClCompile Include="zrm\zrmreadylayout.cpp" />
+    <ClCompile Include="zrm\zrmreadywidget.cpp" />
+    <ClCompile Include="zrm\zrmrelaybase.cpp" />
+    <ClCompile Include="zrm\zrmreport.cpp" />
+    <ClCompile Include="data\zrmreportdatabase.cpp" />
+    <ClCompile Include="data\zrmstageschart.cpp" />
+    <ClCompile Include="data\zrmstageseditor.cpp" />
+    <ClCompile Include="zrm\zrmwidget.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\qtshared\crc\crc_unit.hpp" />
+    <ClInclude Include="..\qtshared\dev_proto\dev_proto.hpp" />
+    <ClInclude Include="..\qtshared\ftdidevice\ftd2xx.h" />
+    <QtMoc Include="..\qtshared\ftdidevice\ftdidevice.h">
+    </QtMoc>
+    <ClInclude Include="..\qtshared\ftdidevice\ftdilib.h" />
+    <QtMoc Include="mainwindow.h">
+    </QtMoc>
+    <QtMoc Include="..\qtshared\multi_iodev\miodevworker.h">
+    </QtMoc>
+    <QtMoc Include="..\qtshared\multi_iodev\multi_iodev.hpp">
+    </QtMoc>
+    <QtMoc Include="..\qtshared\multi_iodev\mutli_iodev_params.h">
+    </QtMoc>
+    <QtMoc Include="..\qtshared\text_viewer_widget\qtextviewer.h">
+    </QtMoc>
+    <QtMoc Include="data\reportcommon.h">
+    </QtMoc>
+    <ClInclude Include="..\qtshared\inc\signal_bloker.hpp" />
+    <QtMoc Include="zrm\zrm_connectivity.hpp">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmbasewidget.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmcalibrate.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmcellview.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmchannelmimimal.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmconnectivityparam.h">
+    </QtMoc>
+    <QtMoc Include="data\zrmdatabase.h">
+    </QtMoc>
+    <QtMoc Include="data\zrmdatasource.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmdevmethods.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmmaindisplay.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmmethodbase.h">
+    </QtMoc>
+    <QtMoc Include="data\zrmmethodchoose.h">
+    </QtMoc>
+    <QtMoc Include="data\zrmmethodeditor.h">
+    </QtMoc>
+    <QtMoc Include="data\zrmmethodminmax.h">
+    </QtMoc>
+    <QtMoc Include="data\zrmmethodstree.h">
+    </QtMoc>
+    <ClInclude Include="zrm\zrmmodule.hpp" />
+    <QtMoc Include="zrm\zrmmonitor.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmparamsview.h">
+    </QtMoc>
+    <ClInclude Include="zrm\zrmproto.hpp" />
+    <QtMoc Include="zrm\zrmreadyaccum.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmreadylayout.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmreadywidget.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmrelaybase.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmreport.h">
+    </QtMoc>
+    <ClInclude Include="data\zrmreportdatabase.h" />
+    <QtMoc Include="data\zrmstageseditor.h">
+    </QtMoc>
+    <QtMoc Include="zrm\zrmwidget.h">
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="objs\moc\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;objs\moc\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">objs\moc\moc_predefs.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;objs\moc\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">objs\moc\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="ui_mainwindow.h" />
+    <ClInclude Include="ui_mutli_iodev_params.h" />
+    <ClInclude Include="ui_reportcommon.h" />
+    <ClInclude Include="ui_zrmcalibrate.h" />
+    <ClInclude Include="ui_zrmcellview.h" />
+    <ClInclude Include="ui_zrmchannelmimimal.h" />
+    <ClInclude Include="ui_zrmconnectivityparam.h" />
+    <ClInclude Include="ui_zrmdevmethods.h" />
+    <ClInclude Include="ui_zrmmaindisplay.h" />
+    <ClInclude Include="ui_zrmmethodbase.h" />
+    <ClInclude Include="ui_zrmmethodchoose.h" />
+    <ClInclude Include="ui_zrmmethodeditor.h" />
+    <ClInclude Include="ui_zrmmethodminmax.h" />
+    <ClInclude Include="ui_zrmmethodstree.h" />
+    <ClInclude Include="ui_zrmmonitor.h" />
+    <ClInclude Include="ui_zrmparamsview.h" />
+    <ClInclude Include="ui_zrmreadywidget.h" />
+    <ClInclude Include="ui_zrmrelaybase.h" />
+    <ClInclude Include="ui_zrmreport.h" />
+    <ClInclude Include="ui_zrmstageseditor.h" />
+    <ClInclude Include="ui_zrmwidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="mainwindow.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_mainwindow.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_mainwindow.h</OutputFile>
+    </QtUic>
+    <QtUic Include="..\qtshared\multi_iodev\mutli_iodev_params.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_mutli_iodev_params.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_mutli_iodev_params.h</OutputFile>
+    </QtUic>
+    <QtUic Include="data\reportcommon.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_reportcommon.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_reportcommon.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmcalibrate.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmcalibrate.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmcalibrate.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmcellview.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmcellview.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmcellview.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmchannelmimimal.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmchannelmimimal.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmchannelmimimal.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmconnectivityparam.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmconnectivityparam.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmconnectivityparam.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmdevmethods.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmdevmethods.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmdevmethods.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmmaindisplay.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmmaindisplay.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmmaindisplay.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmmethodbase.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmmethodbase.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmmethodbase.h</OutputFile>
+    </QtUic>
+    <QtUic Include="data\zrmmethodchoose.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmmethodchoose.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmmethodchoose.h</OutputFile>
+    </QtUic>
+    <QtUic Include="data\zrmmethodeditor.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmmethodeditor.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmmethodeditor.h</OutputFile>
+    </QtUic>
+    <QtUic Include="data\zrmmethodminmax.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmmethodminmax.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmmethodminmax.h</OutputFile>
+    </QtUic>
+    <QtUic Include="data\zrmmethodstree.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmmethodstree.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmmethodstree.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmmonitor.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmmonitor.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmmonitor.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmparamsview.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmparamsview.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmparamsview.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmreadywidget.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmreadywidget.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmreadywidget.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmrelaybase.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmrelaybase.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmrelaybase.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmreport.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmreport.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmreport.h</OutputFile>
+    </QtUic>
+    <QtUic Include="data\zrmstageseditor.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmstageseditor.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmstageseditor.h</OutputFile>
+    </QtUic>
+    <QtUic Include="zrm\zrmwidget.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_zrmwidget.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_zrmwidget.h</OutputFile>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\qtshared\multi_iodev\SERIAL.png" />
+    <None Include="..\qtshared\multi_iodev\USB.png" />
+    <None Include="icons\about.png" />
+    <None Include="zrm\icons\additional.png" />
+    <None Include="zrm\sounds\alarm.wav" />
+    <None Include="..\qtshared\multi_iodev\apply.png" />
+    <None Include="data\icons\apply.png" />
+    <None Include="data\icons\arrow_down.png" />
+    <None Include="zrm\icons\arrow_down.png" />
+    <None Include="data\icons\arrow_up.png" />
+    <None Include="zrm\icons\arrow_up.png" />
+    <None Include="zrm\icons\battery.png" />
+    <None Include="icons\blockdevice.png" />
+    <None Include="zrm\icons\chan_add.png" />
+    <None Include="zrm\icons\chan_remove.png" />
+    <None Include="data\icons\charge.png" />
+    <None Include="zrm\icons\check.png" />
+    <None Include="icons\checkbox_checked.png" />
+    <None Include="icons\checkbox_checked_disabled.png" />
+    <None Include="icons\checkbox_checked_focus.png" />
+    <None Include="icons\checkbox_unchecked.png" />
+    <None Include="icons\checkbox_unchecked_disabled.png" />
+    <None Include="icons\checkbox_unchecked_focus.png" />
+    <None Include="data\cmethods.db3" />
+    <None Include="zrm\icons\conn_add.png" />
+    <None Include="zrm\icons\conn_remove.png" />
+    <None Include="zrm\icons\control_pause.png" />
+    <None Include="data\icons\copy_model.png" />
+    <None Include="zrm\icons\current_in.png" />
+    <None Include="zrm\icons\current_out.png" />
+    <None Include="icons\decor.png" />
+    <None Include="data\icons\delete.png" />
+    <None Include="data\icons\discharge.png" />
+    <None Include="data\icons\edit.png" />
+    <None Include="zrm\icons\equalizer.png" />
+    <None Include="icons\exit-1.png" />
+    <None Include="icons\hardware.png" />
+    <None Include="zrm\icons\html.png" />
+    <None Include="zrm\icons\icons8-car-battery-64.png" />
+    <None Include="data\icons\impulse.png" />
+    <None Include="data\icons\kfouleggs.png" />
+    <None Include="zrm\icons\ledblue.png" />
+    <None Include="zrm\icons\ledgreen.png" />
+    <None Include="zrm\icons\ledpurple.png" />
+    <None Include="zrm\icons\ledred.png" />
+    <None Include="zrm\icons\ledyellow.png" />
+    <None Include="data\icons\left.png" />
+    <None Include="zrm\icons\left.png" />
+    <None Include="data\icons\link.png" />
+    <None Include="zrm\icons\maximize.png" />
+    <None Include="icons\meter-1.png" />
+    <None Include="zrm\icons\meter-1.png" />
+    <None Include="zrm\icons\meter-2.png" />
+    <None Include="zrm\icons\method.png" />
+    <None Include="icons\method_editor.png" />
+    <None Include="zrm\icons\minimize.png" />
+    <None Include="data\icons\minus.png" />
+    <None Include="zrm\icons\modeI.png" />
+    <None Include="zrm\icons\modeIstab.png" />
+    <None Include="zrm\icons\modeU.png" />
+    <None Include="zrm\icons\modeUstab.png" />
+    <None Include="zrm\icons\mon-clear.png" />
+    <None Include="zrm\icons\monitor.png" />
+    <QtRcc Include="..\qtshared\multi_iodev\multi_iodev_params.qrc">
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">multi_iodev_params</InitFuncName>
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">multi_iodev_params</InitFuncName>
+    </QtRcc>
+    <None Include="zrm\icons\navigate-down.png" />
+    <None Include="zrm\icons\navigate-up.png" />
+    <None Include="zrm\icons\network-idle.png" />
+    <None Include="zrm\icons\network-offline.png" />
+    <None Include="zrm\icons\network-receive.png" />
+    <None Include="zrm\icons\network-transmit.png" />
+    <None Include="data\icons\new.png" />
+    <None Include="data\icons\new_child.png" />
+    <None Include="data\icons\new_minion-1.png" />
+    <None Include="data\icons\new_minion-2.png" />
+    <None Include="data\icons\new_minion.png" />
+    <None Include="data\icons\new_user.png" />
+    <None Include="data\icons\pause-1.png" />
+    <None Include="data\icons\pinball.png" />
+    <None Include="data\icons\plus.png" />
+    <None Include="data\pmethods.db3" />
+    <None Include="icons\powermon.png" />
+    <QtRcc Include="powermon.qrc">
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">powermon</InitFuncName>
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">powermon</InitFuncName>
+    </QtRcc>
+    <None Include="zrm\icons\relay_off.png" />
+    <None Include="zrm\icons\relay_on.png" />
+    <None Include="zrm\icons\report-1.png" />
+    <None Include="icons\report.png" />
+    <None Include="zrm\icons\report.png" />
+    <None Include="zrm\icons\report_save.png" />
+    <None Include="data\icons\right.png" />
+    <None Include="zrm\icons\right.png" />
+    <None Include="zrm\icons\save.png" />
+    <None Include="zrm\icons\save_pdf.png" />
+    <None Include="icons\settings-2.png" />
+    <None Include="zrm\icons\start.png" />
+    <None Include="icons\start_all.png" />
+    <None Include="zrm\icons\stop.png" />
+    <None Include="icons\stop_all.png" />
+    <None Include="icons\style-1.png" />
+    <None Include="icons\style.png" />
+    <None Include="data\svcreports.db3" />
+    <None Include="data\icons\system-users.png" />
+    <None Include="icons\table1.png" />
+    <None Include="icons\table2.png" />
+    <None Include="..\qtshared\multi_iodev\tcp.png" />
+    <None Include="..\qtshared\multi_iodev\udp.png" />
+    <None Include="..\qtshared\multi_iodev\undo.png" />
+    <None Include="data\icons\undo.png" />
+    <None Include="zrm\icons\undo.png" />
+    <None Include="icons\view_multicolumn.png" />
+    <QtRcc Include="data\zrm_data.qrc">
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">zrm_data</InitFuncName>
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">zrm_data</InitFuncName>
+    </QtRcc>
+    <None Include="zrm\files\zrm_errors.txt" />
+    <None Include="zrm\files\zrm_modes.txt" />
+    <QtRcc Include="zrm\zrm_resource.qrc">
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">zrm_resource</InitFuncName>
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">zrm_resource</InitFuncName>
+    </QtRcc>
+    <None Include="zrm\style\zrm_style.qss" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="android\AndroidManifest.xml" />
+    <None Include="android\build.gradle" />
+    <None Include="android\gradle\wrapper\gradle-wrapper.jar" />
+    <None Include="android\gradle\wrapper\gradle-wrapper.properties" />
+    <None Include="android\gradlew.bat" />
+    <None Include="android\gradlew" />
+    <None Include="android\res\values\libs.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include=".\powermon64_resource.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Qt5Version_x0020_x64="Qt 5.13.0 x64" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

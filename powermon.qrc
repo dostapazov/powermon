@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/exit-1.png</file>
+        <file>icons/settings-2.png</file>
+        <file>icons/method_editor.png</file>
+        <file>icons/meter-1.png</file>
+        <file>icons/about.png</file>
+        <file>icons/blockdevice.png</file>
+        <file>icons/decor.png</file>
+        <file>icons/hardware.png</file>
+        <file>icons/style.png</file>
+        <file>icons/view_multicolumn.png</file>
+        <file>icons/table1.png</file>
+        <file>icons/table2.png</file>
+        <file>icons/start_all.png</file>
+        <file>icons/stop_all.png</file>
+        <file>icons/style-1.png</file>
+        <file>icons/report.png</file>
+        <file>icons/checkbox_checked.png</file>
+        <file>icons/checkbox_checked_disabled.png</file>
+        <file>icons/checkbox_checked_focus.png</file>
+        <file>icons/checkbox_unchecked.png</file>
+        <file>icons/checkbox_unchecked_disabled.png</file>
+        <file>icons/checkbox_unchecked_focus.png</file>
+        <file>icons/powermon.png</file>
+    </qresource>
+</RCC>

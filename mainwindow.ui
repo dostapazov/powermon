@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>842</width>
+    <height>620</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <property name="spacing">
+     <number>4</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="currentIndex">
+       <number>4</number>
+      </property>
+      <widget class="ZrmReadyWidget" name="zrm_ready"/>
+      <widget class="QWidget" name="zrm_view">
+       <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="5">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMinAndMaxSize</enum>
+        </property>
+        <property name="leftMargin">
+         <number>4</number>
+        </property>
+        <property name="topMargin">
+         <number>4</number>
+        </property>
+        <property name="rightMargin">
+         <number>4</number>
+        </property>
+        <property name="bottomMargin">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="ZrmWidget" name="zrm_widget" native="true">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="method_editor_page">
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMinAndMaxSize</enum>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="ZrmMethodEditor" name="method_editor" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="conn_params_page">
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMinAndMaxSize</enum>
+        </property>
+        <item>
+         <widget class="ZrmConnectivityParam" name="conn_params" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="style_page">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QFrame" name="style_frame">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <layout class="QFormLayout" name="formLayout">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label">
+                 <property name="text">
+                  <string>Выбор стиля</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QComboBox" name="style_select"/>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_2">
+                 <property name="text">
+                  <string>Шрифт</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QFontComboBox" name="fontComboBox"/>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>Размер</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QSpinBox" name="font_size">
+                 <property name="minimum">
+                  <number>3</number>
+                 </property>
+                 <property name="maximum">
+                  <number>96</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QToolButton" name="font_bold">
+                 <property name="text">
+                  <string>Жирный</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="powermon.qrc">
+                   <normaloff>:/icons/icons/checkbox_unchecked_focus.png</normaloff>
+                   <normalon>:/icons/icons/checkbox_checked_focus.png</normalon>:/icons/icons/checkbox_unchecked_focus.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>24</width>
+                   <height>24</height>
+                  </size>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="toolButtonStyle">
+                  <enum>Qt::ToolButtonTextBesideIcon</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QToolButton" name="font_italic">
+                 <property name="text">
+                  <string>Наклонный</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="powermon.qrc">
+                   <normaloff>:/icons/icons/checkbox_unchecked_focus.png</normaloff>
+                   <normalon>:/icons/icons/checkbox_checked_focus.png</normalon>:/icons/icons/checkbox_unchecked_focus.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>24</width>
+                   <height>24</height>
+                  </size>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="toolButtonStyle">
+                  <enum>Qt::ToolButtonTextBesideIcon</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>337</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="preview_frame">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <widget class="QGroupBox" name="gb_ctrls">
+             <property name="title">
+              <string>Просмотр</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_7">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_4">
+                  <item>
+                   <widget class="QTreeWidget" name="treeWidget">
+                    <column>
+                     <property name="text">
+                      <string>Элемент</string>
+                     </property>
+                    </column>
+                    <item>
+                     <property name="text">
+                      <string>Root</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>Child1</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Child2</string>
+                      </property>
+                     </item>
+                    </item>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QScrollBar" name="verticalScrollBar">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QScrollBar" name="horizontalScrollBar">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="0" column="5">
+                 <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="label_3">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="4" colspan="2">
+                 <widget class="QCheckBox" name="checkBox">
+                  <property name="text">
+                   <string>CheckBox</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1" colspan="2">
+                 <widget class="QPushButton" name="pushButton">
+                  <property name="text">
+                   <string>Кнопка</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QRadioButton" name="radioButton">
+                  <property name="text">
+                   <string>RadioButton</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2" colspan="3">
+                 <widget class="QLineEdit" name="lineEdit">
+                  <property name="text">
+                   <string> Line Edit</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QComboBox" name="comboBox">
+                  <item>
+                   <property name="text">
+                    <string>Item1</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Item2</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Item3</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QProgressBar" name="progressBar">
+                <property name="value">
+                 <number>24</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>150</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="ZrmMethodChoose" name="method_chooser"/>
+      <widget class="ReportCommon" name="report_common"/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>842</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="allowedAreas">
+    <set>Qt::AllToolBarAreas</set>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>48</width>
+     <height>48</height>
+    </size>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>RightToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actReadyView"/>
+   <addaction name="actZrmView"/>
+   <addaction name="actStartAll"/>
+   <addaction name="actStopAll"/>
+   <addaction name="actChooseMethod"/>
+   <addaction name="separator"/>
+   <addaction name="actReports"/>
+   <addaction name="separator"/>
+   <addaction name="actMethod_Editor"/>
+   <addaction name="actConfigure"/>
+   <addaction name="actStyle"/>
+   <addaction name="separator"/>
+   <addaction name="actExit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+  </widget>
+  <action name="actMethod_Editor">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="powermon.qrc">
+     <normaloff>:/icons/icons/method_editor.png</normaloff>:/icons/icons/method_editor.png</iconset>
+   </property>
+   <property name="text">
+    <string>MEditor</string>
+   </property>
+   <property name="toolTip">
+    <string>Редактор методов</string>
+   </property>
+  </action>
+  <action name="actConfigure">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="powermon.qrc">
+     <normaloff>:/icons/icons/settings-2.png</normaloff>:/icons/icons/settings-2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Настройки</string>
+   </property>
+   <property name="toolTip">
+    <string>Настройки</string>
+   </property>
+  </action>
+  <action name="actExit">
+   <property name="icon">
+    <iconset resource="powermon.qrc">
+     <normaloff>:/icons/icons/exit-1.png</normaloff>:/icons/icons/exit-1.png</iconset>
+   </property>
+   <property name="text">
+    <string>Завершение</string>
+   </property>
+   <property name="toolTip">
+    <string>Завершить работу(Alt+X)</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+X</string>
+   </property>
+  </action>
+  <action name="actZrmView">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="powermon.qrc">
+     <normaloff>:/icons/icons/meter-1.png</normaloff>:/icons/icons/meter-1.png</iconset>
+   </property>
+   <property name="text">
+    <string>zrmview</string>
+   </property>
+   <property name="toolTip">
+    <string>Просмотр параметров устройств</string>
+   </property>
+  </action>
+  <action name="actStyle">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="powermon.qrc">
+     <normaloff>:/icons/icons/style-1.png</normaloff>:/icons/icons/style-1.png</iconset>
+   </property>
+   <property name="text">
+    <string>Style</string>
+   </property>
+   <property name="toolTip">
+    <string>Оформление</string>
+   </property>
+  </action>
+  <action name="actReadyView">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="powermon.qrc">
+     <normaloff>:/icons/icons/table2.png</normaloff>:/icons/icons/table2.png</iconset>
+   </property>
+   <property name="text">
+    <string>ReadyList</string>
+   </property>
+   <property name="toolTip">
+    <string>Отображение всех</string>
+   </property>
+  </action>
+  <action name="actChooseMethod">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="zrm/zrm_resource.qrc">
+     <normaloff>:/zrm/icons/method.png</normaloff>:/zrm/icons/method.png</iconset>
+   </property>
+   <property name="text">
+    <string>Выбор метода</string>
+   </property>
+   <property name="toolTip">
+    <string>Выбор метода</string>
+   </property>
+  </action>
+  <action name="actStartAll">
+   <property name="icon">
+    <iconset resource="powermon.qrc">
+     <normaloff>:/icons/icons/start_all.png</normaloff>:/icons/icons/start_all.png</iconset>
+   </property>
+   <property name="text">
+    <string>Запуск всех</string>
+   </property>
+   <property name="toolTip">
+    <string>Запуск всех</string>
+   </property>
+  </action>
+  <action name="actStopAll">
+   <property name="icon">
+    <iconset resource="powermon.qrc">
+     <normaloff>:/icons/icons/stop_all.png</normaloff>:/icons/icons/stop_all.png</iconset>
+   </property>
+   <property name="text">
+    <string>Остановить все</string>
+   </property>
+   <property name="toolTip">
+    <string>Остановить все</string>
+   </property>
+  </action>
+  <action name="actReports">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="powermon.qrc">
+     <normaloff>:/icons/icons/report.png</normaloff>:/icons/icons/report.png</iconset>
+   </property>
+   <property name="text">
+    <string>Отчеты</string>
+   </property>
+   <property name="toolTip">
+    <string>Отчеты</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ZrmReadyWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">zrmreadywidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ZrmWidget</class>
+   <extends>QWidget</extends>
+   <header>zrmwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ZrmConnectivityParam</class>
+   <extends>QWidget</extends>
+   <header>zrmconnectivityparam.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ZrmMethodEditor</class>
+   <extends>QWidget</extends>
+   <header>zrmmethodeditor.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ZrmMethodChoose</class>
+   <extends>QWidget</extends>
+   <header>zrmmethodchoose.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ReportCommon</class>
+   <extends>QWidget</extends>
+   <header>reportcommon.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="zrm/zrm_resource.qrc"/>
+  <include location="powermon.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>473</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>switch_config(bool)</slot>
+ </slots>
+</ui>
