@@ -294,6 +294,7 @@ void ZrmMethodEditor::on_actUndo_triggered()
 void ZrmMethodEditor::do_delete_item(QTreeWidgetItem *item , bool select_next)
 {
  bool ret = true;
+
  if(!item_is_new(item))
  {
    switch(methods_tree->item_table(item))
@@ -379,46 +380,6 @@ void ZrmMethodEditor::on_actLink_toggled(bool checked)
   actDelete->setVisible    (!checked);
 }
 
-
-
-
-//bool ZrmMethodEditor::on_dsb_changed(QDoubleSpinBox * dsb)
-//{
-//     double  value = dsb->value();
-//     auto curr_item  =  methods_tree->current_item();
-//     if( dsb == edAkbVoltage)
-//     {
-//      methods_tree->set_method_param(curr_item, ZrmMethodsTree::column_voltage , value);
-//      zrm_method.m_method.set_voltage(value);
-//      return true;
-//     }
-
-//     if( dsb == edAkbCapacity)
-//     {
-//      methods_tree->set_method_param(curr_item,  ZrmMethodsTree::column_capacity , value);
-//      zrm_method.m_method.set_capacity(value);
-//      return  true;
-//     }
-//   return false;
-//}
-
-//void ZrmMethodEditor::on_parameters_changed()
-//{
-//   QObject * src = sender();
-
-//   auto curr_item  =  methods_tree->current_item();
-//   auto table_type =  methods_tree->item_table(curr_item);
-//   Q_UNUSED(table_type);
-//   QDoubleSpinBox * dsb = dynamic_cast<QDoubleSpinBox*>(src);
-
-//   if(dsb )
-//   {
-//      if(on_dsb_changed(dsb))
-//       set_change_mask(curr_item, change_item, true);
-//      return;
-//   }
-
-//}
 
 
 void ZrmMethodEditor::create_new(bool child)

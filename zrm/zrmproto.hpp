@@ -155,7 +155,7 @@ struct proto_header
   uint16_t packet_number;
   uint16_t channel;
   uint8_t  type;
-  uint16_t data_size;
+  uint16_t data_size = 0;
   proto_header(uint16_t _session_id, uint16_t _number ,uint16_t _channel, uint8_t _type);
   size_t   operator()() const {return size_t(data_size);}
   void     operator()(size_t _dsz) { data_size = uint16_t(_dsz);}
@@ -591,6 +591,7 @@ inline proto_header::proto_header(uint16_t _session_id, uint16_t _number ,uint16
                     ,packet_number(_number    )
                     ,channel      (_channel   )
                     ,type         (_type      )
+	                
 {}
 
 template <typename _Type>

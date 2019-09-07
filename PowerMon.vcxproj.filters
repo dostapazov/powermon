@@ -55,6 +55,11 @@
       <Extensions>*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\qtshared\crc\crc_unit.cpp">
@@ -772,6 +777,9 @@
     </QtRcc>
     <None Include="zrm\style\zrm_style.qss">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="powermon_en.ts">
+      <Filter>Translation Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
