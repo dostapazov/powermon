@@ -47,7 +47,7 @@ MainWindow::MainWindow(QWidget *parent) :
       QScreen * screen = qApp->primaryScreen();
       connect(screen, &QScreen::primaryOrientationChanged, this, &MainWindow::orientation_changed);
 
-      QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
       write_log(QtInfoMsg,"Application started");
       QCoreApplication::setApplicationVersion(QString("2.1"));
       QString wtitle = QString("%1  v:%2").arg(qApp->applicationName()).arg(qApp->applicationVersion());
@@ -316,7 +316,7 @@ void MainWindow::set_method_all()
    ZrmMethodChoose mc(this);
 
    #ifdef Q_OS_ANDROID
-    mc.setGeometry(geometry());
+    //mc.setGeometry(geometry());
    #endif
    mc.set_mode(wm);
 

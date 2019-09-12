@@ -77,12 +77,12 @@ void ZrmMethodEditor::connect_signals()
 #ifdef Q_OS_ANDROID
 void ZrmMethodEditor::setup_android_ui()
 {
-    auto tb_list =  findChildren<QToolButton*>();
-    QSize sz(96,96);
-    for(auto tb: tb_list)
-    {
-        tb->setIconSize(sz);
-    }
+//    auto tb_list =  findChildren<QToolButton*>();
+//    QSize sz(96,96);
+//    for(auto tb: tb_list)
+//    {
+//        tb->setIconSize(sz);
+//    }
 }
 #endif
 

@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui network  sql charts multimedia printsupport
-CONFIG += thread c++11
+CONFIG += thread c++11 no_batch
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

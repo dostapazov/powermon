@@ -15,7 +15,8 @@ class ZrmChannelMimimal;
 class ZrmReadyWidget : public ZrmBaseWidget, private Ui::ZrmReadyWidget
 {
     Q_OBJECT
-    Q_DISABLE_COPY_MOVE(ZrmReadyWidget)
+    Q_DISABLE_COPY(ZrmReadyWidget)
+
 public:
     explicit ZrmReadyWidget(QWidget *parent = nullptr);
     ~ZrmReadyWidget() override;
