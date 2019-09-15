@@ -72,6 +72,8 @@ private:
       QToolBar          * m_edit_tool_bar = Q_NULLPTR;
 static QtMessageHandler   prev_msg_handler;
 static void msg_handler   (QtMsgType msg_type, const QMessageLogContext & msg_context, const QString & msg_text);
+void method_editor_activate(bool checked);
+void method_chooser_activate(bool checked);
 };
 
 #endif // MAINWINDOW_H

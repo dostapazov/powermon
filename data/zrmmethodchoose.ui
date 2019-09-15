@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>535</width>
-    <height>414</height>
+    <width>394</width>
+    <height>362</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -188,8 +188,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>48</width>
-            <height>48</height>
+            <width>24</width>
+            <height>24</height>
            </size>
           </property>
           <property name="checkable">
@@ -220,8 +220,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>48</width>
-            <height>48</height>
+            <width>24</width>
+            <height>24</height>
            </size>
           </property>
           <property name="checkable">

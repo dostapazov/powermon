@@ -247,7 +247,7 @@ void MainWindow::write_log(QtMsgType msg_type, QString log_string)
   endl(log_stream);
 #else
     Q_UNUSED(msg_type)
-    Q_UNUSED(log_string);
+    Q_UNUSED(log_string)
 #endif
 }
 
@@ -575,7 +575,7 @@ bool MainWindow::eventFilter(QObject * target,QEvent * event)
 
 void MainWindow::orientation_changed(Qt::ScreenOrientation screen_orient)
 {
-      Q_UNUSED(screen_orient);
+      Q_UNUSED(screen_orient)
 }
 
 
@@ -585,6 +585,45 @@ void MainWindow::channel_method_choose()
   actChooseMethod->setChecked(true);
 }
 
+
+void MainWindow::method_editor_activate(bool checked)
+{
+    if(!m_edit_tool_bar)
+    {
+     m_edit_tool_bar = method_editor->get_toolbar();
+     addToolBar(Qt::ToolBarArea::LeftToolBarArea,m_edit_tool_bar);
+    }
+    if(checked)
+    {
+        stackedWidget->setCurrentWidget(method_editor_page);
+        method_editor->open_db(zrm_ready->current_ready() ->work_mode() , false);
+        m_edit_tool_bar->setVisible(true);
+    }
+    else
+    {
+        m_edit_tool_bar->setVisible(false);
+        method_editor->save_user_values();
+        //removeToolBar(m_edit_tool_bar);
+    }
+    //method_editor->setVisible(checked);
+}
+
+void MainWindow::method_chooser_activate(bool checked)
+{
+    if(checked)
+    {
+      auto m_current_zrm = zrm_ready->current_ready();
+      auto wm =  m_current_zrm->work_mode();
+      method_chooser->set_mode(wm);
+      method_chooser->open_database(true);
+      stackedWidget->setCurrentWidget(method_chooser);
+    }
+    else
+    {
+     method_chooser->close_database();
+     m_channel_method_choose = false;
+    }
+}
 
 void MainWindow::action_toggled(bool checked)
 {
@@ -608,44 +647,11 @@ void MainWindow::action_toggled(bool checked)
          break;
 
     case act_method_choose:
-         if(checked)
-         {
-           auto m_current_zrm = zrm_ready->current_ready();
-           auto wm =  m_current_zrm->work_mode();
-           method_chooser->set_mode(wm);
-           method_chooser->open_database(true);
-           stackedWidget->setCurrentWidget(method_chooser);
-         }
-         else
-         {
-          method_chooser->close_database();
-          m_channel_method_choose = false;
-         }
-         method_chooser->setVisible(checked);
+         method_chooser_activate(checked);
          break;
 
     case act_method_editor:
-
-         if(!m_edit_tool_bar)
-         {
-          m_edit_tool_bar = method_editor->get_toolbar();
-          addToolBar(Qt::ToolBarArea::LeftToolBarArea,m_edit_tool_bar);
-         }
-         if(checked)
-         {
-             stackedWidget->setCurrentWidget(method_editor_page);
-             method_editor->open_db(zrm_ready->current_ready() ->work_mode() , false);
-
-             m_edit_tool_bar->setVisible(true);
-         }
-         else
-         {
-             m_edit_tool_bar->setVisible(false);
-             method_editor->save_user_values();
-             //removeToolBar(m_edit_tool_bar);
-         }
-         method_editor->setVisible(checked);
-
+         method_editor_activate(checked);
          break;
 
     case act_configure:
@@ -672,6 +678,10 @@ void MainWindow::action_toggled(bool checked)
    default:
          break;
   }
+
+//  setGeometry(QGuiApplication::primaryScreen()->geometry());
+//  adjustSize();
+//  layout()->update();
 }
 
 void MainWindow::channel_activated(zrm::ZrmConnectivity * conn, unsigned channel)

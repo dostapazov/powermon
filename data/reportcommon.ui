@@ -6,14 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>886</width>
-    <height>685</height>
+    <width>794</width>
+    <height>437</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetMinAndMaxSize</enum>
+   </property>
    <item>
     <widget class="QSplitter" name="splitter_2">
      <property name="sizePolicy">
@@ -993,9 +996,9 @@
   <tabstop>bNumbersApply</tabstop>
  </tabstops>
  <resources>
-  <include location="zrm_data.qrc"/>
-  <include location="../zrm/zrm_resource.qrc"/>
   <include location="../powermon.qrc"/>
+  <include location="../zrm/zrm_resource.qrc"/>
+  <include location="zrm_data.qrc"/>
  </resources>
  <connections>
   <connection>
