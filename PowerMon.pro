@@ -27,10 +27,10 @@ windows{
 
 DEFINES += MULTI_IODEV_CONFIG_WIDGET
 
-include(../qtshared/crc/crc_unit.pri )
-include(../qtshared/multi_iodev/multi_iodev.pri)
-include(../qtshared/dev_proto/dev_proto.pri)
-include(../qtshared/text_viewer_widget/text_view_widget.pri)
+include(qtshared/crc/crc_unit.pri )
+include(qtshared/multi_iodev/multi_iodev.pri)
+include(qtshared/dev_proto/dev_proto.pri)
+include(qtshared/text_viewer_widget/text_view_widget.pri)
 
 
 # The following define makes your compiler emit warnings if you use
