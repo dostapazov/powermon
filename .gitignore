@@ -1,1 +1,7 @@
 .svn/*
+/bin/*
+/Debug/*
+/objs/*
+/release/*
+/x64/*
+/objs/*
