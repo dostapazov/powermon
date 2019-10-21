@@ -469,6 +469,7 @@ void   ZrmConnectivity::module_state_changed (zrm_module_ptr_t & mod  , bool * p
        if(!curr_state.state_bits.auto_on && !curr_state.state_bits.start_pause)
           {
            channel_query_param( mod->channel() , PARAM_METH_EXEC_RESULT);
+           qDebug()<<"Result requested channel no "<<mod->channel();
            need_ping = true;
           }
      }
@@ -804,7 +805,7 @@ void               ZrmConnectivity::channel_set_masakb_param(uint16_t ch_num, co
 
 void              ZrmConnectivity::channel_read_eprom_method(uint16_t     ch_num,uint8_t met_number )
 {
-    qDebug()<<"Request eprom method "<<met_number;
+    //qDebug()<<"Request eprom method "<<met_number;
     channel_write_param(ch_num, WM_PROCESS, PARAM_RD_EPROM_METHOD,&met_number, sizeof(met_number));
 }
 

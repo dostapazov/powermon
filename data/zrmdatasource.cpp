@@ -73,7 +73,7 @@ QString check_and_restore(const QString & conn_str)
    QFile source(src_file);
    if(source.open(QFile::ReadOnly))
    {
-     int chunk_size = 8192;
+     constexpr int chunk_size = 8192;
      while(!source.atEnd())
      {
        dest.write( source.read(chunk_size) );

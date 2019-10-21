@@ -141,7 +141,7 @@ bool  ZrmMethodChoose::make_manual_method(zrm::zrm_method_t  & zrm_method, QText
  zrm::method_t  & met = zrm_method.m_method ;
  met = zrm::method_t();
  met.m_id = 0;
- memcpy(met.m_name,name.constData(),std::min(sizeof(met.m_name), size_t(name.size())));
+ strncpy(met.m_name,name.constData(),std::min(sizeof(met.m_name), size_t(name.size())));
  met.set_voltage (manLimU->value());
  met.set_current (manLimI->value());
  met.set_capacity(manLimI->value());
@@ -219,7 +219,9 @@ void ZrmMethodChoose::restore_last_manual_values()
    manLimU      ->setValue     (jobj[val_voltage].toDouble(.0));
    manLimI      ->setValue     (jobj[val_current].toDouble(.0));
 
-   int h = jobj[val_hour   ].toInt(0),m = jobj[val_minutes].toInt(0) ,s = jobj[val_secunds].toInt(0);
+   int h = jobj[val_hour   ].toInt(0);
+   int m = jobj[val_minutes].toInt(0);
+   int s = jobj[val_secunds].toInt(0);
    manLimHour   ->setValue     (h);
    manLimMinutes->setValue     (m);
    manLimSecunds->setValue     (s);

@@ -113,15 +113,17 @@ void set_edit_enable(QTreeWidgetItem * item, bool edit_name, bool edit_voltage,b
 
 void ZrmMethodEditor::item_set_inactive(QTreeWidgetItem * prev)
 {
-  if(prev )
-  {
-   set_edit_enable(prev,false,false,false);
-   if(change_mask(prev))
-   {
-     if(item_is_new(prev))
-       do_delete_item(prev,false);
-        else
-       do_undo_changes(prev);
+ if(prev )
+ {
+    set_edit_enable(prev,false,false,false);
+    if(change_mask(prev))
+    {
+        if(item_is_new(prev)) {
+            do_delete_item(prev,false);
+        }
+        else {
+            do_undo_changes(prev);
+        }
    }
   }
 }
@@ -182,8 +184,8 @@ QString method_time(const zrm::method_t & method)
 
 void set_method_time( zrm::method_t & method, const QString & str)
 {
-  uint8_t tval[3] = {0};
-  uint8_t * ptval = tval;
+   uint8_t  tval[3] = {0};
+   uint8_t* ptval = tval;
   for(const auto & sl : str.split(QLatin1String(":")))
       *ptval++ = uint8_t(sl.trimmed().toUInt());
   method.m_hours = tval[0]; method.m_minutes = tval[1]; method.m_secs = tval[2];
@@ -227,7 +229,7 @@ void     ZrmMethodEditor::slot_item_data_changed                  (QTreeWidgetIt
 {
 
     QString item_text = item->text(column);
-    qDebug()<<Q_FUNC_INFO<<"sender "<<sender()<<"column "<<column<<" text "<<item_text;
+    //qDebug()<<Q_FUNC_INFO<<"sender "<<sender()<<"column "<<column<<" text "<<item_text;
     auto item_table = ZrmMethodsTree::item_table(item);
 
     switch(column)

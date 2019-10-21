@@ -13,6 +13,8 @@
 class ZrmMethodsTree : public QWidget, private Ui::ZrmMethodsTree
 {
     Q_OBJECT
+    Q_DISABLE_COPY(ZrmMethodsTree)
+    Q_DISABLE_MOVE(ZrmMethodsTree)
 
 public:
     enum tree_roles_t

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'reportcommon.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.13.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -102,7 +102,7 @@ public:
     {
         if (ReportCommon->objectName().isEmpty())
             ReportCommon->setObjectName(QString::fromUtf8("ReportCommon"));
-        ReportCommon->resize(886, 685);
+        ReportCommon->resize(794, 437);
         actUserNew = new QAction(ReportCommon);
         actUserNew->setObjectName(QString::fromUtf8("actUserNew"));
         QIcon icon;
@@ -151,6 +151,7 @@ public:
         actNumberMarkDel->setIcon(icon3);
         verticalLayout_3 = new QVBoxLayout(ReportCommon);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        verticalLayout_3->setSizeConstraint(QLayout::SetMinAndMaxSize);
         splitter_2 = new QSplitter(ReportCommon);
         splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

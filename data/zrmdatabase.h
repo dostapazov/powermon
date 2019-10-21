@@ -46,9 +46,9 @@ public:
     static bool          write_type          (QSqlDatabase &db, QVariant & id, const QString & type_name );
 
 
-    static bool          erase_type          (QSqlDatabase & db, QVariant id, bool commit_trans = true);
+    static bool          erase_type          (QSqlDatabase & db, const QVariant &id, bool commit_trans = true);
 
-    static bool          erase_model         (QSqlDatabase & db, QVariant id, bool commit_trans = true);
+    static bool          erase_model         (QSqlDatabase & db, const QVariant &id, bool commit_trans = true);
     static bool          write_model         (QSqlDatabase & db, QVariant id_type, QVariant & id, const QString & name, double voltage, double capacity, bool commit_trans = true);
     static bool          is_null_id          (const QVariant & id);
 

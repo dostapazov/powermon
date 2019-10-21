@@ -543,6 +543,7 @@ bool      ZrmMethodsTree::get_method(QTreeWidgetItem * item, zrm::zrm_method_t &
     method.m_minutes = std::get<1>(hms);
     method.m_secs    = std::get<1>(hms);
 
+
     QString method_name = model_name.length() ?  QString("%1:%2").arg( model_name ).arg(item->text(column_name)) : item->text(column_name) ;
 
     QByteArray name_array;
@@ -551,8 +552,9 @@ bool      ZrmMethodsTree::get_method(QTreeWidgetItem * item, zrm::zrm_method_t &
     else
         name_array = method_name.toLocal8Bit();
 
-    memset(method.m_name, 0, sizeof(method.m_name));
-    memcpy(method.m_name, name_array.constData(),qMin(sizeof(method.m_name), size_t(name_array.size())));
+    std::fill(method.m_name,method.m_name+ sizeof(method.m_name), 0);
+
+    strncpy(method.m_name, name_array.constData(),qMin(sizeof(method.m_name), size_t(name_array.size())));
 
     zrm_method.m_method = method;
     zrm_method.m_method.m_stages = uint8_t( read_stages(item , zrm_method.m_stages) );

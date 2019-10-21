@@ -283,16 +283,16 @@ void ReportCommon::read_reports    ()
 
       auto hdr = ReportTable->horizontalHeader();
       hdr->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
-      hdr->setSectionResizeMode(4, QHeaderView::ResizeMode::Stretch);
+      hdr->setSectionResizeMode(REPORT_COLUMN_USER, QHeaderView::ResizeMode::Stretch);
       hdr->hideSection(0);
       hdr->hideSection(1);
       hdr->hideSection(2);
 
-      m_reports_model->setHeaderData(3,Qt::Horizontal,QObject::tr("Дата"));
-      m_reports_model->setHeaderData(4,Qt::Horizontal,QObject::tr("Пользователь"));
-      m_reports_model->setHeaderData(5,Qt::Horizontal,QObject::tr("Длительность"));
-      m_reports_model->setHeaderData(6,Qt::Horizontal,QObject::tr("Мощность"));
-      m_reports_model->setHeaderData(7,Qt::Horizontal,QObject::tr("Ёмкость"));
+      m_reports_model->setHeaderData(REPORT_COLUMN_DATA,    Qt::Horizontal,QObject::tr("Дата"));
+      m_reports_model->setHeaderData(REPORT_COLUMN_USER,    Qt::Horizontal,QObject::tr("Пользователь"));
+      m_reports_model->setHeaderData(REPORT_COLUMN_DURATION,Qt::Horizontal,QObject::tr("Длительность"));
+      m_reports_model->setHeaderData(REPORT_COLUMN_POWER,   Qt::Horizontal,QObject::tr("Мощность"));
+      m_reports_model->setHeaderData(REPORT_COLUMN_CAPACITY,Qt::Horizontal,QObject::tr("Ёмкость"));
       auto selection_model = ReportTable->selectionModel();
       if(selection_model)
       {
@@ -332,7 +332,7 @@ void ReportItemDelegate::paint(QPainter *painter,
   switch(index.column())
   {
 
-   case 3 :
+   case REPORT_COLUMN_DATA :
         {
 
          QString str = index.data().toDateTime().toString(("dd-MM-yyyy hh:mm:ss"));
@@ -340,7 +340,7 @@ void ReportItemDelegate::paint(QPainter *painter,
 
         }
       break;
-   case 5 :
+   case REPORT_COLUMN_DURATION :
          {
           auto hms = zrm::method_t::secunds2hms(index.data().toUInt());
           QString str = zrm::ZrmConnectivity::hms2string(hms);

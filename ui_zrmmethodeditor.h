@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'zrmmethodeditor.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.13.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -173,6 +173,7 @@ public:
         verticalLayout_8 = new QVBoxLayout();
         verticalLayout_8->setSpacing(4);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
+        verticalLayout_8->setSizeConstraint(QLayout::SetMinAndMaxSize);
         verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_8->addItem(verticalSpacer_4);
@@ -227,7 +228,7 @@ public:
 
         horizontalLayout->addWidget(param_widget);
 
-        horizontalLayout->setStretch(0, 2);
+        horizontalLayout->setStretch(0, 1);
         horizontalLayout->setStretch(1, 1);
         QWidget::setTabOrder(tbLinkMethod, tbUnlinkMethod);
 

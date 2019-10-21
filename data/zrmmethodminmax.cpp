@@ -57,10 +57,10 @@ void ZrmMethodMinmax::set_minmax_values(const zrm::zrm_method_t & met,const qvar
 {
     auto minmaxU =  get_minmax_idx(vecU);
     auto minmaxI =  get_minmax_idx(vecI);
-    int idx,stage,stages_count = int(met.stages_count());
+    int stages_count = int(met.stages_count());
+    int idx = std::get<0>(minmaxI);
+    int stage = idx < stages_count ? idx : idx-stages_count;
 
-    idx   = std::get<0>(minmaxI);
-    stage = idx < stages_count ? idx : idx-stages_count;
     if(idx>=0)
     {
       //Минимальное значение тока

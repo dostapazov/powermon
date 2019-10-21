@@ -13,6 +13,7 @@ class ZrmMethodChoose : public QDialog, private Ui::ZrmMethodChoose
 {
     Q_OBJECT
     Q_DISABLE_COPY(ZrmMethodChoose)
+    Q_DISABLE_MOVE(ZrmMethodChoose)
 public:
     explicit ZrmMethodChoose(QWidget *parent = nullptr);
     ~ZrmMethodChoose() override;

@@ -555,7 +555,7 @@ bool  ZrmDatabase::write_type (QSqlDatabase & db, QVariant & id, const QString &
  return ret;
 }
 
-bool ZrmDatabase::erase_model        (QSqlDatabase & db, QVariant id, bool commit_trans)
+bool ZrmDatabase::erase_model        (QSqlDatabase & db, const QVariant &id, bool commit_trans)
 {
     bool ret = false;
     start_transaction(db);
@@ -574,7 +574,7 @@ bool ZrmDatabase::erase_model        (QSqlDatabase & db, QVariant id, bool commi
     return ret;
 }
 
-bool ZrmDatabase::erase_type        (QSqlDatabase & db, QVariant id, bool commit_trans)
+bool ZrmDatabase::erase_type        (QSqlDatabase & db, const QVariant & id, bool commit_trans)
 {
  start_transaction(db);
  QString qtext = "delete from t_akb_type where id = :id";

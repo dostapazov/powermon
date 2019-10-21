@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'zrmmaindisplay.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.13.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -79,7 +79,7 @@ public:
     {
         if (ZrmMainDisplay->objectName().isEmpty())
             ZrmMainDisplay->setObjectName(QString::fromUtf8("ZrmMainDisplay"));
-        ZrmMainDisplay->resize(487, 375);
+        ZrmMainDisplay->resize(487, 329);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -87,6 +87,7 @@ public:
         ZrmMainDisplay->setSizePolicy(sizePolicy);
         verticalLayout = new QVBoxLayout(ZrmMainDisplay);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
         frame = new QFrame(ZrmMainDisplay);
         frame->setObjectName(QString::fromUtf8("frame"));
         QSizePolicy sizePolicy1(QSizePolicy::MinimumExpanding, QSizePolicy::Maximum);
@@ -146,7 +147,7 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/zrm/icons/method.png"), QSize(), QIcon::Normal, QIcon::Off);
         bMethod->setIcon(icon);
-        bMethod->setIconSize(QSize(32, 32));
+        bMethod->setIconSize(QSize(24, 24));
         bMethod->setFlat(false);
 
         gridLayout_2->addWidget(bMethod, 0, 1, 1, 1);
@@ -182,7 +183,7 @@ public:
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/zrm/icons/start.png"), QSize(), QIcon::Normal, QIcon::Off);
         bStartStop->setIcon(icon1);
-        bStartStop->setIconSize(QSize(32, 32));
+        bStartStop->setIconSize(QSize(24, 24));
         bStartStop->setCheckable(false);
         bStartStop->setFlat(false);
 
@@ -198,7 +199,7 @@ public:
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/zrm/icons/control_pause.png"), QSize(), QIcon::Normal, QIcon::Off);
         bPause->setIcon(icon2);
-        bPause->setIconSize(QSize(32, 32));
+        bPause->setIconSize(QSize(24, 24));
         bPause->setCheckable(false);
         bPause->setFlat(false);
 
@@ -212,7 +213,7 @@ public:
         QIcon icon3;
         icon3.addFile(QString::fromUtf8(":/zrm/icons/mon-clear.png"), QSize(), QIcon::Normal, QIcon::Off);
         bResetError->setIcon(icon3);
-        bResetError->setIconSize(QSize(32, 32));
+        bResetError->setIconSize(QSize(24, 24));
 
         gridLayout_2->addWidget(bResetError, 2, 0, 1, 1);
 
@@ -232,6 +233,7 @@ public:
         groupBox_2->setAlignment(Qt::AlignCenter);
         gridLayout = new QGridLayout(groupBox_2);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
         label_2 = new QLabel(groupBox_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         QSizePolicy sizePolicy6(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);

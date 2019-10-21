@@ -72,7 +72,7 @@ void ZrmReadyAccum::handle_state      (zrm::ZrmConnectivity* __conn, unsigned ch
     if(m_exec_count != exec_count)
     {
        m_exec_count = exec_count;
-       qDebug()<<QString(" Running count %1").arg(exec_count);
+       //qDebug()<<QString(" Running count %1").arg(exec_count);
        update_view(true);
     }
 }
@@ -111,7 +111,7 @@ void ZrmReadyAccum::handle_error_state(zrm::ZrmConnectivity* __conn, unsigned ch
          QSound::play(":/zrm/sounds/alarm.wav");
      }
 
-     qDebug()<<QString(" Error count %1").arg(error_count);
+     //qDebug()<<QString(" Error count %1").arg(error_count);
      m_error_count = error_count;
      update_view(true);
      if(error_code) ZrmBaseWidget::flash_timer.start_flash();
@@ -179,7 +179,7 @@ void ZrmReadyAccum::update_view(bool flash_on)
 
 void ZrmReadyAccum::paintEvent        (QPaintEvent * pe  )
 {
-    qDebug()<<Q_FUNC_INFO;
+    //qDebug()<<Q_FUNC_INFO;
     Q_UNUSED(pe)
     QPainter p(this);
     auto icon = get_current_icon(ZrmBaseWidget::flash_timer.is_flash_on());

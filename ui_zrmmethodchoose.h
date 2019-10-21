@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'zrmmethodchoose.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.13.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -79,7 +79,7 @@ public:
     {
         if (ZrmMethodChoose->objectName().isEmpty())
             ZrmMethodChoose->setObjectName(QString::fromUtf8("ZrmMethodChoose"));
-        ZrmMethodChoose->resize(535, 414);
+        ZrmMethodChoose->resize(394, 362);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -177,7 +177,7 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/data/icons/charge.png"), QSize(), QIcon::Normal, QIcon::Off);
         tbCharge->setIcon(icon);
-        tbCharge->setIconSize(QSize(48, 48));
+        tbCharge->setIconSize(QSize(24, 24));
         tbCharge->setCheckable(true);
         tbCharge->setChecked(true);
         tbCharge->setAutoExclusive(true);
@@ -191,7 +191,7 @@ public:
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/data/icons/discharge.png"), QSize(), QIcon::Normal, QIcon::Off);
         tbDischarge->setIcon(icon1);
-        tbDischarge->setIconSize(QSize(48, 48));
+        tbDischarge->setIconSize(QSize(24, 24));
         tbDischarge->setCheckable(true);
         tbDischarge->setChecked(false);
         tbDischarge->setAutoExclusive(true);

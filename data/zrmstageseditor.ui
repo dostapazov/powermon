@@ -151,7 +151,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>I</string>
+             <string>C</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

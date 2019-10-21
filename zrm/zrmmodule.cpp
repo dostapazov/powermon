@@ -291,6 +291,7 @@ uint16_t  ZrmModule::handle_results (uint16_t data_size, const uint8_t * beg, co
 {
   const stage_exec_result_t * res_beg = reinterpret_cast<const stage_exec_result_t*>(beg);
   const stage_exec_result_t * res_end = reinterpret_cast<const stage_exec_result_t*>(end);
+  qDebug()<<"handle results channel no "<< this->channel();
   if( data_size<0xFF ) res_end = res_beg + data_size/sizeof (*res_beg);
   data_size = 0;
   //qDebug()<<"ZrmModule::Handle results";

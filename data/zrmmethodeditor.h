@@ -78,7 +78,7 @@ protected:
     void do_delete_item      (QTreeWidgetItem * item, bool select_next);
     void create_new          (bool child);
     static int change_mask   (const QTreeWidgetItem * item) ;
-
+private:
     zrm_edit_method_t zrm_method;
     QSqlError         m_last_error;
     QToolBar        * m_tool_bar = Q_NULLPTR;

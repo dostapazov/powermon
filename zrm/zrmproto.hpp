@@ -294,7 +294,7 @@ typedef       method_t* lp_method_t;
 typedef const method_t* lpc_method_t;
 
 
-enum stage_type_t
+enum stage_type_t  
 {
   STT_PAUSE = 0,
   STT_CHARGE,
@@ -411,8 +411,8 @@ struct stage_t
 
     void set_end_temp      (double value )            { m_end_temper    = uint16_t(value * stage_precision2);}
     void set_end_cell_volt (double value )            { m_end_elem_volt = uint16_t(value *stage_precision2 );}
-    bool is_charge         () const {return m_type & STT_CHARGE;}
-    bool is_discharge      () const {return m_type & STT_DISCHARGE;}
+    bool is_charge         () const {return m_type & static_cast<uint8_t>(STT_CHARGE);}
+    bool is_discharge      () const {return m_type & static_cast<uint8_t>(STT_DISCHARGE);}
     bool is_pause          () const {return m_type == STT_PAUSE;}
     bool is_impulse        () const {return m_type == STT_IMPULSE;}
 

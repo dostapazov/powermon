@@ -5,9 +5,18 @@
 #include <zrmreportdatabase.h>
 #include <qtablewidget.h>
 
+constexpr int REPORT_COLUMN_DATA      = 3;
+constexpr int REPORT_COLUMN_USER      = 4;
+constexpr int REPORT_COLUMN_DURATION  = 5;
+constexpr int REPORT_COLUMN_POWER     = 6;
+constexpr int REPORT_COLUMN_CAPACITY  = 7;
+
+
 class ReportCommon : public QWidget, private Ui::ReportCommon
 {
     Q_OBJECT
+    Q_DISABLE_COPY(ReportCommon)
+    Q_DISABLE_MOVE(ReportCommon)
 
 public:
     explicit ReportCommon(QWidget *parent = nullptr);

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'zrmstageseditor.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.13.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -116,7 +116,7 @@ public:
     {
         if (ZrmStagesEditor->objectName().isEmpty())
             ZrmStagesEditor->setObjectName(QString::fromUtf8("ZrmStagesEditor"));
-        ZrmStagesEditor->resize(787, 516);
+        ZrmStagesEditor->resize(653, 405);
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -125,6 +125,7 @@ public:
         verticalLayout_3 = new QVBoxLayout(ZrmStagesEditor);
         verticalLayout_3->setSpacing(4);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        verticalLayout_3->setSizeConstraint(QLayout::SetMinAndMaxSize);
         verticalLayout_3->setContentsMargins(2, 2, 2, 2);
         method_box = new QGroupBox(ZrmStagesEditor);
         method_box->setObjectName(QString::fromUtf8("method_box"));
@@ -306,9 +307,11 @@ public:
         horizontalLayout_5 = new QHBoxLayout(stages_box);
         horizontalLayout_5->setSpacing(4);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalLayout_5->setSizeConstraint(QLayout::SetMinAndMaxSize);
         horizontalLayout_5->setContentsMargins(4, 4, 4, 4);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(4);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
@@ -450,7 +453,7 @@ public:
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/data/icons/charge.png"), QSize(), QIcon::Normal, QIcon::Off);
         tbCharge->setIcon(icon5);
-        tbCharge->setIconSize(QSize(48, 48));
+        tbCharge->setIconSize(QSize(24, 24));
         tbCharge->setCheckable(true);
         tbCharge->setAutoExclusive(true);
         tbCharge->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -464,7 +467,7 @@ public:
         QIcon icon6;
         icon6.addFile(QString::fromUtf8(":/data/icons/discharge.png"), QSize(), QIcon::Normal, QIcon::Off);
         tbDischarge->setIcon(icon6);
-        tbDischarge->setIconSize(QSize(48, 48));
+        tbDischarge->setIconSize(QSize(24, 24));
         tbDischarge->setCheckable(true);
         tbDischarge->setChecked(true);
         tbDischarge->setAutoExclusive(true);
@@ -479,7 +482,7 @@ public:
         QIcon icon7;
         icon7.addFile(QString::fromUtf8(":/data/icons/impulse.png"), QSize(), QIcon::Normal, QIcon::Off);
         tbImpulse->setIcon(icon7);
-        tbImpulse->setIconSize(QSize(48, 48));
+        tbImpulse->setIconSize(QSize(24, 24));
         tbImpulse->setCheckable(true);
         tbImpulse->setChecked(false);
         tbImpulse->setAutoRepeat(false);
@@ -495,7 +498,7 @@ public:
         QIcon icon8;
         icon8.addFile(QString::fromUtf8(":/data/icons/pause-1.png"), QSize(), QIcon::Normal, QIcon::Off);
         tbPause->setIcon(icon8);
-        tbPause->setIconSize(QSize(48, 48));
+        tbPause->setIconSize(QSize(24, 24));
         tbPause->setCheckable(true);
         tbPause->setAutoExclusive(true);
         tbPause->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -809,6 +812,8 @@ public:
 
         horizontalLayout_5->addLayout(verticalLayout_2);
 
+        horizontalLayout_5->setStretch(0, 1);
+        horizontalLayout_5->setStretch(1, 2);
 
         verticalLayout_3->addWidget(stages_box);
 

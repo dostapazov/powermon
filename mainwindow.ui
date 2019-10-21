@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>843</width>
-    <height>617</height>
+    <width>829</width>
+    <height>634</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -444,7 +444,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>843</width>
+     <width>829</width>
      <height>21</height>
     </rect>
    </property>
@@ -466,7 +466,7 @@
     <bool>false</bool>
    </property>
    <attribute name="toolBarArea">
-    <enum>RightToolBarArea</enum>
+    <enum>LeftToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
@@ -687,8 +687,8 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="zrm/zrm_resource.qrc"/>
   <include location="powermon.qrc"/>
+  <include location="zrm/zrm_resource.qrc"/>
  </resources>
  <connections>
   <connection>

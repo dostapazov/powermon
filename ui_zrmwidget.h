@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'zrmwidget.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.13.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -69,7 +69,7 @@ public:
     {
         if (ZrmWidget->objectName().isEmpty())
             ZrmWidget->setObjectName(QString::fromUtf8("ZrmWidget"));
-        ZrmWidget->resize(563, 441);
+        ZrmWidget->resize(536, 351);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -119,7 +119,7 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/zrm/icons/left.png"), QSize(), QIcon::Normal, QIcon::Off);
         bPrevChannel->setIcon(icon);
-        bPrevChannel->setIconSize(QSize(32, 32));
+        bPrevChannel->setIconSize(QSize(24, 24));
 
         horizontalLayout->addWidget(bPrevChannel);
 
@@ -128,7 +128,7 @@ public:
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/zrm/icons/right.png"), QSize(), QIcon::Normal, QIcon::Off);
         bNextChannel->setIcon(icon1);
-        bNextChannel->setIconSize(QSize(32, 32));
+        bNextChannel->setIconSize(QSize(24, 24));
 
         horizontalLayout->addWidget(bNextChannel);
 
@@ -137,7 +137,7 @@ public:
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/zrm/icons/additional.png"), QSize(), QIcon::Normal, QIcon::Off);
         bAddition->setIcon(icon2);
-        bAddition->setIconSize(QSize(32, 32));
+        bAddition->setIconSize(QSize(24, 24));
         bAddition->setCheckable(true);
 
         horizontalLayout->addWidget(bAddition);
@@ -147,7 +147,7 @@ public:
         QIcon icon3;
         icon3.addFile(QString::fromUtf8(":/zrm/icons/method.png"), QSize(), QIcon::Normal, QIcon::Off);
         bShowMethod->setIcon(icon3);
-        bShowMethod->setIconSize(QSize(32, 32));
+        bShowMethod->setIconSize(QSize(24, 24));
         bShowMethod->setCheckable(true);
 
         horizontalLayout->addWidget(bShowMethod);
@@ -195,7 +195,7 @@ public:
         sizePolicy4.setHeightForWidth(bDevMeth->sizePolicy().hasHeightForWidth());
         bDevMeth->setSizePolicy(sizePolicy4);
         bDevMeth->setIcon(icon3);
-        bDevMeth->setIconSize(QSize(32, 32));
+        bDevMeth->setIconSize(QSize(24, 24));
         bDevMeth->setCheckable(true);
         bDevMeth->setChecked(false);
         bDevMeth->setAutoExclusive(true);
@@ -210,7 +210,7 @@ public:
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/zrm/icons/equalizer.png"), QSize(), QIcon::Normal, QIcon::Off);
         bCalibrate->setIcon(icon4);
-        bCalibrate->setIconSize(QSize(32, 32));
+        bCalibrate->setIconSize(QSize(24, 24));
         bCalibrate->setAutoExclusive(true);
 
         verticalLayout->addWidget(bCalibrate);
@@ -222,7 +222,7 @@ public:
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/zrm/icons/report.png"), QSize(), QIcon::Normal, QIcon::Off);
         bReport->setIcon(icon5);
-        bReport->setIconSize(QSize(32, 32));
+        bReport->setIconSize(QSize(24, 24));
         bReport->setCheckable(true);
         bReport->setChecked(false);
         bReport->setAutoExclusive(true);
@@ -237,7 +237,7 @@ public:
         QIcon icon6;
         icon6.addFile(QString::fromUtf8(":/zrm/icons/battery.png"), QSize(), QIcon::Normal, QIcon::Off);
         bMasakb->setIcon(icon6);
-        bMasakb->setIconSize(QSize(32, 32));
+        bMasakb->setIconSize(QSize(24, 24));
         bMasakb->setCheckable(true);
         bMasakb->setChecked(true);
         bMasakb->setAutoExclusive(true);
@@ -256,7 +256,7 @@ public:
         QIcon icon7;
         icon7.addFile(QString::fromUtf8(":/zrm/icons/meter-2.png"), QSize(), QIcon::Normal, QIcon::Off);
         bParams->setIcon(icon7);
-        bParams->setIconSize(QSize(32, 32));
+        bParams->setIconSize(QSize(24, 24));
         bParams->setCheckable(true);
         bParams->setChecked(false);
         bParams->setAutoExclusive(true);
@@ -271,7 +271,7 @@ public:
         QIcon icon8;
         icon8.addFile(QString::fromUtf8(":/zrm/icons/monitor.png"), QSize(), QIcon::Normal, QIcon::Off);
         bMonitor->setIcon(icon8);
-        bMonitor->setIconSize(QSize(32, 32));
+        bMonitor->setIconSize(QSize(24, 24));
         bMonitor->setCheckable(true);
         bMonitor->setChecked(false);
         bMonitor->setAutoExclusive(true);
@@ -316,6 +316,9 @@ public:
 
         verticalLayout_2->addWidget(gb_additional);
 
+        verticalLayout_2->setStretch(0, 1);
+        verticalLayout_2->setStretch(1, 1);
+        verticalLayout_2->setStretch(2, 2);
         QWidget::setTabOrder(bAddition, bShowMethod);
 
         retranslateUi(ZrmWidget);
