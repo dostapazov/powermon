@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>653</width>
-    <height>405</height>
+    <width>732</width>
+    <height>497</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,24 +20,6 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
-   <property name="spacing">
-    <number>4</number>
-   </property>
-   <property name="sizeConstraint">
-    <enum>QLayout::SetMinAndMaxSize</enum>
-   </property>
-   <property name="leftMargin">
-    <number>2</number>
-   </property>
-   <property name="topMargin">
-    <number>2</number>
-   </property>
-   <property name="rightMargin">
-    <number>2</number>
-   </property>
-   <property name="bottomMargin">
-    <number>2</number>
-   </property>
    <item>
     <widget class="QGroupBox" name="method_box">
      <property name="sizePolicy">
@@ -355,25 +337,7 @@
      <property name="title">
       <string/>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,2">
-      <property name="spacing">
-       <number>4</number>
-      </property>
-      <property name="sizeConstraint">
-       <enum>QLayout::SetMinAndMaxSize</enum>
-      </property>
-      <property name="leftMargin">
-       <number>4</number>
-      </property>
-      <property name="topMargin">
-       <number>4</number>
-      </property>
-      <property name="rightMargin">
-       <number>4</number>
-      </property>
-      <property name="bottomMargin">
-       <number>4</number>
-      </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <property name="sizeConstraint">
@@ -680,6 +644,9 @@
         <property name="spacing">
          <number>4</number>
         </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMaximumSize</enum>
+        </property>
         <item>
          <widget class="QFrame" name="stage_type_frame">
           <property name="sizePolicy">
@@ -906,6 +873,19 @@
              <property name="spacing">
               <number>4</number>
              </property>
+             <item row="0" column="1">
+              <widget class="QLabel" name="label_11">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>U</string>
+               </property>
+              </widget>
+             </item>
              <item row="0" column="4">
               <widget class="QDoubleSpinBox" name="edChargeCurrent">
                <property name="sizePolicy">
@@ -925,19 +905,6 @@
                </property>
                <property name="singleStep">
                 <double>0.100000000000000</double>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="3">
-              <widget class="QLabel" name="label_10">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>I</string>
                </property>
               </widget>
              </item>
@@ -963,8 +930,8 @@
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="label_11">
+             <item row="0" column="3">
+              <widget class="QLabel" name="label_10">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
                  <horstretch>0</horstretch>
@@ -972,7 +939,26 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>U</string>
+                <string>I</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2" colspan="3">
+              <widget class="QSpinBox" name="sbChargeTime">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="suffix">
+                <string> сек.</string>
+               </property>
+               <property name="prefix">
+                <string>Длительность заряда </string>
+               </property>
+               <property name="maximum">
+                <number>250</number>
                </property>
               </widget>
              </item>
@@ -1041,19 +1027,6 @@
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="label_13">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>U</string>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="4">
               <widget class="QDoubleSpinBox" name="edDischargeCurrent">
                <property name="sizePolicy">
@@ -1076,59 +1049,23 @@
                </property>
               </widget>
              </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="1" column="0" colspan="2">
-           <widget class="QGroupBox" name="gbPulse">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="title">
-             <string>Длительность</string>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <property name="spacing">
-              <number>4</number>
-             </property>
-             <property name="leftMargin">
-              <number>4</number>
-             </property>
-             <property name="topMargin">
-              <number>4</number>
-             </property>
-             <property name="rightMargin">
-              <number>4</number>
-             </property>
-             <property name="bottomMargin">
-              <number>4</number>
-             </property>
-             <item>
-              <widget class="QSpinBox" name="sbChargeTime">
+             <item row="0" column="1">
+              <widget class="QLabel" name="label_13">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
-               <property name="suffix">
-                <string> сек.</string>
-               </property>
-               <property name="prefix">
-                <string>Заряд - </string>
-               </property>
-               <property name="maximum">
-                <number>250</number>
+               <property name="text">
+                <string>U</string>
                </property>
               </widget>
              </item>
-             <item>
+             <item row="1" column="2" colspan="3">
               <widget class="QSpinBox" name="sbDischargeTime">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -1137,7 +1074,7 @@
                 <string> сек.</string>
                </property>
                <property name="prefix">
-                <string>Разряд   </string>
+                <string>Длительность разряда </string>
                </property>
                <property name="maximum">
                 <number>250</number>
@@ -1176,6 +1113,62 @@
            <property name="spacing">
             <number>4</number>
            </property>
+           <item row="2" column="1">
+            <widget class="QDoubleSpinBox" name="sbFinishTemperature">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="specialValueText">
+              <string>--</string>
+             </property>
+             <property name="suffix">
+              <string> C</string>
+             </property>
+             <property name="decimals">
+              <number>2</number>
+             </property>
+             <property name="maximum">
+              <double>999.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="3">
+            <widget class="QDoubleSpinBox" name="sbFinishCellVoltage">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="specialValueText">
+              <string>--</string>
+             </property>
+             <property name="suffix">
+              <string> В</string>
+             </property>
+             <property name="decimals">
+              <number>2</number>
+             </property>
+             <property name="maximum">
+              <double>999.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
            <item row="3" column="1">
             <widget class="QDoubleSpinBox" name="sbFinishCapacity">
              <property name="enabled">
@@ -1204,64 +1197,43 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QDoubleSpinBox" name="sbFinishVoltage">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
+           <item row="1" column="2">
+            <widget class="QToolButton" name="cbFinishCurrent">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
-             <property name="specialValueText">
-              <string>--</string>
+             <property name="text">
+              <string>По I</string>
              </property>
-             <property name="suffix">
-              <string> В</string>
+             <property name="icon">
+              <iconset resource="../powermon.qrc">
+               <normaloff>:/icons/icons/checkbox_unchecked_disabled.png</normaloff>
+               <normalon>:/icons/icons/checkbox_checked.png</normalon>
+               <activeoff>:/icons/icons/checkbox_unchecked_focus.png</activeoff>
+               <activeon>:/icons/icons/checkbox_checked_focus.png</activeon>:/icons/icons/checkbox_unchecked_disabled.png</iconset>
              </property>
-             <property name="decimals">
-              <number>2</number>
+             <property name="iconSize">
+              <size>
+               <width>24</width>
+               <height>24</height>
+              </size>
              </property>
-             <property name="maximum">
-              <double>999.000000000000000</double>
+             <property name="checkable">
+              <bool>true</bool>
              </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
              </property>
             </widget>
            </item>
            <item row="2" column="3">
             <widget class="QDoubleSpinBox" name="sbFinishDeltaVoltage">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="specialValueText">
-              <string>--</string>
-             </property>
-             <property name="suffix">
-              <string> В</string>
-             </property>
-             <property name="decimals">
-              <number>2</number>
-             </property>
-             <property name="maximum">
-              <double>999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="3">
-            <widget class="QDoubleSpinBox" name="sbFinishCellVoltage">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -1316,91 +1288,6 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
-            <widget class="QDoubleSpinBox" name="sbFinishTemperature">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="specialValueText">
-              <string>--</string>
-             </property>
-             <property name="suffix">
-              <string> C</string>
-             </property>
-             <property name="decimals">
-              <number>2</number>
-             </property>
-             <property name="maximum">
-              <double>999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QSpinBox" name="sbFinishHour">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="suffix">
-              <string> час.</string>
-             </property>
-             <property name="displayIntegerBase">
-              <number>10</number>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <widget class="QSpinBox" name="sbFinishMinuts">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="suffix">
-              <string> мин.</string>
-             </property>
-             <property name="maximum">
-              <number>60</number>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="3">
-            <widget class="QSpinBox" name="sbFinishSecunds">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="suffix">
-              <string> сек.</string>
-             </property>
-             <property name="maximum">
-              <number>60</number>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="0">
             <widget class="QToolButton" name="cbFinishTime">
              <property name="sizePolicy">
@@ -1433,8 +1320,8 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="0">
-            <widget class="QToolButton" name="cbFinishVoltage">
+           <item row="2" column="2">
+            <widget class="QToolButton" name="cbFinishDeltaVoltage">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -1442,7 +1329,7 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>По U</string>
+              <string>По ΔU</string>
              </property>
              <property name="icon">
               <iconset resource="../powermon.qrc">
@@ -1465,8 +1352,27 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
-            <widget class="QToolButton" name="cbFinishTemperature">
+           <item row="0" column="1">
+            <widget class="QSpinBox" name="sbFinishHour">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="suffix">
+              <string> час.</string>
+             </property>
+             <property name="displayIntegerBase">
+              <number>10</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QToolButton" name="cbFinishVoltage">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -1474,7 +1380,7 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>По t</string>
+              <string>По U</string>
              </property>
              <property name="icon">
               <iconset resource="../powermon.qrc">
@@ -1529,73 +1435,6 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="2">
-            <widget class="QToolButton" name="cbFinishCurrent">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>По I</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../powermon.qrc">
-               <normaloff>:/icons/icons/checkbox_unchecked_disabled.png</normaloff>
-               <normalon>:/icons/icons/checkbox_checked.png</normalon>
-               <activeoff>:/icons/icons/checkbox_unchecked_focus.png</activeoff>
-               <activeon>:/icons/icons/checkbox_checked_focus.png</activeon>:/icons/icons/checkbox_unchecked_disabled.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>24</width>
-               <height>24</height>
-              </size>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>false</bool>
-             </property>
-             <property name="toolButtonStyle">
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="QToolButton" name="cbFinishDeltaVoltage">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>По ΔU</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../powermon.qrc">
-               <normaloff>:/icons/icons/checkbox_unchecked_disabled.png</normaloff>
-               <normalon>:/icons/icons/checkbox_checked.png</normalon>
-               <activeoff>:/icons/icons/checkbox_unchecked_focus.png</activeoff>
-               <activeon>:/icons/icons/checkbox_checked_focus.png</activeon>:/icons/icons/checkbox_unchecked_disabled.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>24</width>
-               <height>24</height>
-              </size>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="toolButtonStyle">
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-            </widget>
-           </item>
            <item row="3" column="2">
             <widget class="QToolButton" name="cbFinishCellVoltage">
              <property name="sizePolicy">
@@ -1625,6 +1464,104 @@
              </property>
              <property name="toolButtonStyle">
               <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QSpinBox" name="sbFinishSecunds">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="suffix">
+              <string> сек.</string>
+             </property>
+             <property name="maximum">
+              <number>60</number>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QToolButton" name="cbFinishTemperature">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>По t</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../powermon.qrc">
+               <normaloff>:/icons/icons/checkbox_unchecked_disabled.png</normaloff>
+               <normalon>:/icons/icons/checkbox_checked.png</normalon>
+               <activeoff>:/icons/icons/checkbox_unchecked_focus.png</activeoff>
+               <activeon>:/icons/icons/checkbox_checked_focus.png</activeon>:/icons/icons/checkbox_unchecked_disabled.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>24</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QDoubleSpinBox" name="sbFinishVoltage">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="specialValueText">
+              <string>--</string>
+             </property>
+             <property name="suffix">
+              <string> В</string>
+             </property>
+             <property name="decimals">
+              <number>2</number>
+             </property>
+             <property name="maximum">
+              <double>999.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QSpinBox" name="sbFinishMinuts">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="suffix">
+              <string> мин.</string>
+             </property>
+             <property name="maximum">
+              <number>60</number>
              </property>
             </widget>
            </item>
@@ -1672,8 +1609,6 @@
   <tabstop>edChargeCurrent</tabstop>
   <tabstop>edDischargeVoltage</tabstop>
   <tabstop>edDischargeCurrent</tabstop>
-  <tabstop>sbChargeTime</tabstop>
-  <tabstop>sbDischargeTime</tabstop>
   <tabstop>cbFinishTime</tabstop>
   <tabstop>sbFinishHour</tabstop>
   <tabstop>sbFinishMinuts</tabstop>
@@ -1694,8 +1629,8 @@
   <tabstop>cbCheckCondition</tabstop>
  </tabstops>
  <resources>
-  <include location="../powermon.qrc"/>
   <include location="zrm_data.qrc"/>
+  <include location="../powermon.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -1727,22 +1662,6 @@
     <hint type="destinationlabel">
      <x>620</x>
      <y>156</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tbImpulse</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>gbPulse</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>540</x>
-     <y>103</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>620</x>
-     <y>203</y>
     </hint>
    </hints>
   </connection>

@@ -18,9 +18,15 @@ ZrmMainDisplay::ZrmMainDisplay(QWidget *parent) :
     bind(Q_NULLPTR,0);
 
     connect(edTimeLimit , &QLineEdit::textChanged      , this, &ZrmMainDisplay::manual_method_changed);
+#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
     connect(sbCurrLimit , QOverload<const QString &>::of(&QDoubleSpinBox::valueChanged), this, &ZrmMainDisplay::manual_method_changed);
     connect(sbVoltLimit , QOverload<const QString &>::of(&QDoubleSpinBox::valueChanged), this, &ZrmMainDisplay::manual_method_changed);
     connect(sbCycleTotal, QOverload<const QString &>::of(&QSpinBox::valueChanged),       this, &ZrmMainDisplay::manual_method_changed);
+#else
+    connect(sbCurrLimit , QOverload<const QString &>::of(&QDoubleSpinBox::textChanged), this, &ZrmMainDisplay::manual_method_changed);
+    connect(sbVoltLimit , QOverload<const QString &>::of(&QDoubleSpinBox::textChanged), this, &ZrmMainDisplay::manual_method_changed);
+    connect(sbCycleTotal, QOverload<const QString &>::of(&QSpinBox::textChanged),       this, &ZrmMainDisplay::manual_method_changed);
+#endif
     connect(bStartStop  , &QAbstractButton::clicked, this, &ZrmMainDisplay::start_stop);
     connect(bPause      , &QAbstractButton::clicked, this, &ZrmMainDisplay::pause);
     connect(bResetError , &QAbstractButton::clicked, this, &ZrmMainDisplay::reset_error);

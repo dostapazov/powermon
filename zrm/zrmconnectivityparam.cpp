@@ -196,7 +196,8 @@ void ZrmConnectivityParam::update_tool_buttons(QTreeWidgetItem * item)
     conn_params    ->setEnabled(is_con);
     tbAddChannel   ->setEnabled(is_con || is_chan);
     tbRemove       ->setEnabled(is_con || is_chan);
-    bool start_enabled = false, stop_enabled = false;
+    bool start_enabled = false;
+    bool stop_enabled = false;
     auto conn_dev = connectivity(item);
     if(conn_dev)
     {

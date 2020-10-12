@@ -77,7 +77,7 @@
        <enum>QFrame::Raised</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>2</number>
       </property>
       <widget class="ZrmReadyWidget" name="zrm_ready"/>
       <widget class="QWidget" name="zrm_view">
@@ -445,7 +445,7 @@
      <x>0</x>
      <y>0</y>
      <width>829</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
@@ -477,13 +477,14 @@
    <addaction name="actStopAll"/>
    <addaction name="actChooseMethod"/>
    <addaction name="separator"/>
+   <addaction name="actMethod_Editor"/>
    <addaction name="actReports"/>
    <addaction name="separator"/>
-   <addaction name="actMethod_Editor"/>
    <addaction name="actConfigure"/>
    <addaction name="actStyle"/>
    <addaction name="separator"/>
    <addaction name="actExit"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="sizePolicy">

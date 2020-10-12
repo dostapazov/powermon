@@ -209,7 +209,7 @@ void ZrmConnectivity::handle_recv   (const QByteArray & recv_data)
  if(packet_count)
  {
     //Обработать список ищменифшихся каналов
-     m_watchdog_value.store(m_watchdog_limit);
+     watchdog_reset();
      on_channels_changed();
  }
 }

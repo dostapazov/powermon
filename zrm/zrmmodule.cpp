@@ -258,7 +258,7 @@ void    ZrmModule::handle_data  (const uint8_t * data_ptr, size_t data_size)
 
 uint16_t ZrmModule::handle_cells        (uint16_t data_size, const uint8_t * beg, const uint8_t * end)
 {
-
+    Q_UNUSED(end)
   lpc_zrm_cell_t cbeg = reinterpret_cast<lpc_zrm_cell_t>(beg);
   size_t cnt = data_size/sizeof (*cbeg);
   size_t i = 0;
