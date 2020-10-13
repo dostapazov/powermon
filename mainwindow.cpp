@@ -623,7 +623,7 @@ void MainWindow::method_chooser_activate(bool checked)
 	}
 	else
 	{
-		method_chooser->close_database();
+		method_chooser->set_mode(zrm::zrm_work_mode_t::inactive);
 		m_channel_method_choose = false;
 	}
 }

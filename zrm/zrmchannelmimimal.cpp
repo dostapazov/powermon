@@ -66,7 +66,7 @@ void  ZrmChannelMimimal::update_controls()
 {
     if(m_source && m_channel)
     {
-        lb_mode->setText(m_source->channel_work_mode(m_channel) == zrm::zrm_work_mode_t::as_charger ? tr("ЗРУ"):tr("ИП"));
+        lb_mode->setText(m_source->channel_work_mode(m_channel) == zrm::zrm_work_mode_t::charger ? tr("ЗРУ"):tr("ИП"));
         channel_param_changed(m_channel,m_source->channel_params(m_channel));
     }
 }
@@ -160,7 +160,7 @@ void     ZrmChannelMimimal::set_method(const zrm::zrm_method_t & method)
 
 zrm::zrm_work_mode_t ZrmChannelMimimal::work_mode()
 {
-  return (m_source && m_channel) ? m_source->channel_work_mode(m_channel) : zrm::zrm_work_mode_t::as_charger;
+  return (m_source && m_channel) ? m_source->channel_work_mode(m_channel) : zrm::zrm_work_mode_t::charger;
 }
 
 bool  ZrmChannelMimimal::eventFilter(QObject * target,QEvent * event)

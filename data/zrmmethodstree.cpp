@@ -577,7 +577,7 @@ void      ZrmMethodsTree::read_stages(QTreeWidgetItem* item)
 	for (auto st : stages)
 	{
 		auto st_item  = new_tree_item(QString("%1.%2").arg(st.m_number)
-									  .arg(zrm::stage_t::stage_type_name(m_work_mode ? zrm::as_charger : zrm::as_power, zrm::stage_type_t(st.m_type)))
+									  .arg(zrm::stage_t::stage_type_name(m_work_mode ? zrm::charger : zrm::power, zrm::stage_type_t(st.m_type)))
 									  , table_stages
 									  , st.m_id_method
 									  , false

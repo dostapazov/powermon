@@ -20,7 +20,7 @@ class ZrmModule
 // typedef  std::recursive_mutex                  mutex_t;
 // typedef  std::lock_guard<mutex_t>              locker_t;
 
-          ZrmModule(uint16_t channel = uint16_t(-1),zrm_work_mode_t work_mode = zrm_work_mode_t::as_charger);
+          ZrmModule(uint16_t channel = uint16_t(-1),zrm_work_mode_t work_mode = zrm_work_mode_t::charger);
  virtual ~ZrmModule();
 
  virtual int      handle_recv (const zrm::recv_header_t & recv_data);
@@ -112,7 +112,7 @@ method_exec_results_t      m_exec_results;
 
         zrm_method_t       m_eprom_method;   //Метод запрошенный из памяти устройства
         zrm_cells_t        m_cells;
-        zrm_work_mode_t    m_work_mode = as_charger;
+        zrm_work_mode_t    m_work_mode = charger;
         zrm_maskab_param_t m_maskab_param;
 };
 

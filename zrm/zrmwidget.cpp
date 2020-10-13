@@ -32,7 +32,7 @@ void ZrmWidget::update_controls()
   zrm::zrm_work_mode_t wm = m_source->channel_work_mode(m_channel);
   QString str = QString("%1 : %2").arg( m_source->name()  ).arg(m_channel);
   dev_name->setText(str);
-  if(wm  == zrm::zrm_work_mode_t::as_power)
+  if(wm  == zrm::zrm_work_mode_t::power)
   {
       //Режим источника МАСАКБ - запретить
      if(bMasakb->isChecked())
@@ -62,7 +62,7 @@ void ZrmWidget::clear_controls()
 
 void ZrmWidget::update_buttons_visible()
 {
-   bool visible = m_source && m_channel && m_source->channel_work_mode(m_channel) == zrm::as_charger;
+   bool visible = m_source && m_channel && m_source->channel_work_mode(m_channel) == zrm::charger;
    bMasakb->setVisible(visible);
    bReport->setVisible(visible);
    if(!visible && (bMasakb->isChecked() || bReport->isChecked()) )

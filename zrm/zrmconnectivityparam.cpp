@@ -62,8 +62,8 @@ ZrmConnectivityParam::ZrmConnectivityParam(QWidget *parent) :
 
 void  ZrmConnectivityParam::init_ui   ()
 {
-  channel_type->addItem(zrm::ZrmConnectivity::zrm_work_mode_name( zrm::zrm_work_mode_t::as_power  ), zrm::zrm_work_mode_t::as_power  );
-  channel_type->addItem(zrm::ZrmConnectivity::zrm_work_mode_name( zrm::zrm_work_mode_t::as_charger), zrm::zrm_work_mode_t::as_charger);
+  channel_type->addItem(zrm::ZrmConnectivity::zrm_work_mode_name( zrm::zrm_work_mode_t::power  ), zrm::zrm_work_mode_t::power  );
+  channel_type->addItem(zrm::ZrmConnectivity::zrm_work_mode_name( zrm::zrm_work_mode_t::charger), zrm::zrm_work_mode_t::charger);
 }
 
 void  ZrmConnectivityParam::prepare_ui()
@@ -119,7 +119,7 @@ uint16_t ZrmConnectivityParam::channel_number(QTreeWidgetItem * item,bool old_nu
 
 zrm::zrm_work_mode_t   ZrmConnectivityParam::channel_work_mode(QTreeWidgetItem * item)
 {
-   return item ? zrm::zrm_work_mode_t(item->data(0,Qt::UserRole).toInt()) : zrm::as_power ;
+   return item ? zrm::zrm_work_mode_t(item->data(0,Qt::UserRole).toInt()) : zrm::power ;
 }
 
 
@@ -359,7 +359,7 @@ void  ZrmConnectivityParam::do_channel_add          (QTreeWidgetItem * item, zrm
   if(last_number < zrm::MAX_CHANNEL_NUMBER)
   {
      uint16_t chan_num =  last_number+1;
-     conn->channel_add(chan_num,zrm::as_charger);
+     conn->channel_add(chan_num,zrm::charger);
      auto chan_item = create_channel_item(conn, item, chan_num);
      if(chan_item)
          tw_connectivity->setCurrentItem(chan_item);
@@ -427,8 +427,8 @@ QWidget * zcp_item_delegate::createEditor(QWidget *parent,
       if(index.column() == 0)
       {
         QComboBox * cb = new QComboBox(parent);
-        cb->addItem(zrm::ZrmConnectivity::zrm_work_mode_name(zrm::as_power)  , zrm::as_power);
-        cb->addItem(zrm::ZrmConnectivity::zrm_work_mode_name(zrm::as_charger), zrm::as_charger);
+        cb->addItem(zrm::ZrmConnectivity::zrm_work_mode_name(zrm::power)  , zrm::power);
+        cb->addItem(zrm::ZrmConnectivity::zrm_work_mode_name(zrm::charger), zrm::charger);
         return cb;
       }
       else

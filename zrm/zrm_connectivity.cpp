@@ -635,7 +635,7 @@ zrm_work_mode_t     ZrmConnectivity::channel_work_mode     ( uint16_t     ch_num
 	auto mod = get_channel(ch_num);
 	if (mod.data())
 		return   mod->work_mode() ;
-	return zrm_work_mode_t::as_charger;
+	return zrm_work_mode_t::charger;
 }
 
 
@@ -1157,10 +1157,10 @@ QString      ZrmConnectivity::zrm_work_mode_name( zrm_work_mode_t  wm)
 	QString ret;
 	switch (wm)
 	{
-		case as_power   :
+		case power   :
 			ret = tr("Источник");
 			break;
-		case as_charger :
+		case charger :
 			ret = tr("Зарядное");
 			break;
 	}

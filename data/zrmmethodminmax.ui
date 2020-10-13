@@ -385,7 +385,7 @@
          <string>при U =  </string>
         </property>
         <property name="suffix">
-         <string notr="true">A</string>
+         <string notr="true">В</string>
         </property>
         <property name="maximum">
          <double>9999.989999999999782</double>
@@ -500,7 +500,7 @@
          <string>при U =  </string>
         </property>
         <property name="suffix">
-         <string notr="true">A</string>
+         <string notr="true">В</string>
         </property>
         <property name="maximum">
          <double>9999.989999999999782</double>
