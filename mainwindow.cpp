@@ -547,22 +547,13 @@ void MainWindow::channel_method_choose()
 
 void MainWindow::method_editor_activate(bool checked)
 {
-	if (!m_edit_tool_bar)
-	{
-		m_edit_tool_bar = method_editor->get_toolbar();
-		if (m_edit_tool_bar)
-			addToolBar(Qt::ToolBarArea::TopToolBarArea, m_edit_tool_bar);
-	}
-
 	if (checked)
 	{
 		stackedWidget->setCurrentWidget(method_editor_page);
 		method_editor->open_db(zrm_ready->current_ready() ->work_mode(), false);
-		m_edit_tool_bar->setVisible(true);
 	}
 	else
 	{
-		m_edit_tool_bar->setVisible(false);
 		method_editor->save_user_values();
 	}
 }

@@ -1704,12 +1704,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>305</x>
-     <y>257</y>
+     <x>405</x>
+     <y>244</y>
     </hint>
     <hint type="destinationlabel">
-     <x>429</x>
-     <y>260</y>
+     <x>497</x>
+     <y>239</y>
     </hint>
    </hints>
   </connection>
@@ -1720,12 +1720,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>287</x>
-     <y>261</y>
+     <x>405</x>
+     <y>244</y>
     </hint>
     <hint type="destinationlabel">
-     <x>524</x>
-     <y>264</y>
+     <x>615</x>
+     <y>239</y>
     </hint>
    </hints>
   </connection>
@@ -1736,12 +1736,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>264</y>
+     <x>405</x>
+     <y>244</y>
     </hint>
     <hint type="destinationlabel">
-     <x>639</x>
-     <y>263</y>
+     <x>706</x>
+     <y>239</y>
     </hint>
    </hints>
   </connection>
@@ -1752,12 +1752,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>329</x>
-     <y>290</y>
+     <x>405</x>
+     <y>278</y>
     </hint>
     <hint type="destinationlabel">
-     <x>421</x>
-     <y>289</y>
+     <x>497</x>
+     <y>273</y>
     </hint>
    </hints>
   </connection>
@@ -1768,12 +1768,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>503</x>
-     <y>279</y>
+     <x>615</x>
+     <y>278</y>
     </hint>
     <hint type="destinationlabel">
-     <x>633</x>
-     <y>285</y>
+     <x>706</x>
+     <y>273</y>
     </hint>
    </hints>
   </connection>
@@ -1784,12 +1784,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>333</x>
-     <y>314</y>
+     <x>405</x>
+     <y>312</y>
     </hint>
     <hint type="destinationlabel">
-     <x>420</x>
-     <y>313</y>
+     <x>497</x>
+     <y>307</y>
     </hint>
    </hints>
   </connection>
@@ -1838,6 +1838,38 @@
     <hint type="destinationlabel">
      <x>633</x>
      <y>331</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tbImpulse</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sbDischargeTime</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>568</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>559</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tbImpulse</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sbChargeTime</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>579</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>180</y>
     </hint>
    </hints>
   </connection>

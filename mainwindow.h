@@ -56,7 +56,6 @@ private:
 	QTextStream         log_stream;
 	QActionGroup*       m_action_grp     = Q_NULLPTR;
 	bool                m_channel_method_choose = false;
-	QToolBar*           m_edit_tool_bar = Q_NULLPTR;
 	static QtMessageHandler   prev_msg_handler;
 	static void msg_handler   (QtMsgType msg_type, const QMessageLogContext& msg_context, const QString& msg_text);
 	void method_editor_activate(bool checked);

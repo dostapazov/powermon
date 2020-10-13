@@ -28,5 +28,6 @@
         <file>icons/new_minion-1.png</file>
         <file>icons/new_minion-2.png</file>
         <file>icons/system-users.png</file>
+        <file>icons/copy_model1.png</file>
     </qresource>
 </RCC>

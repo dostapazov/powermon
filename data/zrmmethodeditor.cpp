@@ -17,46 +17,9 @@ ZrmMethodEditor::ZrmMethodEditor(QWidget* parent) :
 	param_widget->setCurrentWidget(empty_page);
 	methods_abstract->show_method_params(false);
 	connect_signals();
+	setupButtons();
 }
 
-
-bool ZrmMethodEditor::open_db(zrm::zrm_work_mode_t as_charger, bool all_methods)
-{
-	bool ret =  methods_tree->open_database(as_charger, all_methods);
-	return ret;
-
-}
-
-QToolBar* ZrmMethodEditor::get_toolbar()
-{
-	if (!m_tool_bar)
-	{
-		m_tool_bar = new QToolBar(this);
-		m_tool_bar->setIconSize(QSize(48, 48));
-		m_tool_bar->setOrientation(Qt::Vertical);
-		m_tool_bar->addAction(actAllMethods);
-		m_tool_bar->addAction(actLink);
-
-		m_tool_bar->addSeparator();
-
-		m_tool_bar->addAction(actMethodEdit);
-
-		m_tool_bar->addSeparator();
-
-		m_tool_bar->addAction(actApply);
-		m_tool_bar->addAction(actUndo);
-		m_tool_bar->addAction(actDelete);
-
-		m_tool_bar->addSeparator();
-
-		m_tool_bar->addAction(actNew);
-		m_tool_bar->addAction(actNewChild);
-		m_tool_bar->addAction(actCopyModel);
-
-	}
-
-	return m_tool_bar;
-}
 
 void ZrmMethodEditor::connect_signals()
 {
@@ -68,9 +31,31 @@ void ZrmMethodEditor::connect_signals()
 	connect(tbLinkMethod, &QAbstractButton::clicked, this, &ZrmMethodEditor::link_abstract_method  );
 	connect(stages_page, &ZrmStagesEditor::method_changed, this, &ZrmMethodEditor::sl_method_changed);
 
+
+
 	connect(methods_tree, &ZrmMethodsTree::current_item_changed, this, &ZrmMethodEditor::slot_current_item_changed);
 	connect(methods_tree, &ZrmMethodsTree::item_changed, this, &ZrmMethodEditor::slot_item_data_changed);
 	connect(methods_abstract, &ZrmMethodsTree::current_item_changed, this, &ZrmMethodEditor::abstract_method_changed);
+}
+
+bool ZrmMethodEditor::open_db(zrm::zrm_work_mode_t as_charger, bool all_methods)
+{
+	bool ret =  methods_tree->open_database(as_charger, all_methods);
+	return ret;
+
+}
+
+void ZrmMethodEditor::setupButtons()
+{
+	bAbstractMethod->setDefaultAction(actAllMethods);
+	bLinkMethod->setDefaultAction(actLink);
+	bEdit->setDefaultAction(actMethodEdit);
+	bApply->setDefaultAction(actApply);
+	bUndo->setDefaultAction(actUndo);
+	bDelete->setDefaultAction(actDelete);
+	bNew->setDefaultAction(actNew);
+	bNewChild->setDefaultAction(actNewChild);
+	bCopyModel->setDefaultAction(actCopyModel);
 }
 
 #ifdef Q_OS_ANDROID
