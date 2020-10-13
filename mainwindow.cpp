@@ -8,7 +8,6 @@
 #include <qactiongroup.h>
 #include <qdesktopwidget.h>
 
-
 #include <zrmdatasource.h>
 #include <zrmmethodeditor.h>
 #include <zrmconnectivityparam.h>
@@ -34,11 +33,8 @@ void MainWindow::msg_handler   (QtMsgType msg_type, const QMessageLogContext& ms
 #endif
 }
 
-
 MainWindow::MainWindow(QWidget* parent) :
 	QMainWindow(parent)
-
-
 {
 	//ChildrenSignalBlocker<QWidget>sb( this);
 	prev_msg_handler = qInstallMessageHandler(msg_handler);
@@ -47,7 +43,6 @@ MainWindow::MainWindow(QWidget* parent) :
 
 	QScreen* screen = qApp->primaryScreen();
 	connect(screen, &QScreen::primaryOrientationChanged, this, &MainWindow::orientation_changed);
-
 
 	write_log(QtInfoMsg, "Application started");
 	QCoreApplication::setApplicationVersion(QString("2.1"));
@@ -90,9 +85,7 @@ MainWindow::~MainWindow()
 	qApp->processEvents();
 	for (auto c : zrm::ZrmConnectivity::connectivities())
 		delete c;
-
 }
-
 
 #ifdef Q_OS_ANDROID
 void MainWindow::update_android_ui()
@@ -101,8 +94,6 @@ void MainWindow::update_android_ui()
 		sb->setButtonSymbols(QAbstractSpinBox::ButtonSymbols::NoButtons);
 }
 #endif
-
-
 
 void MainWindow::init_actions()
 {
@@ -118,7 +109,6 @@ void MainWindow::init_actions()
 
 	actMethod_Editor->setProperty(act_id_prop, act_method_editor);
 	connect(actMethod_Editor, &QAction::toggled, this, &MainWindow::action_toggled);
-
 
 	actConfigure->setProperty(act_id_prop, act_configure);
 	connect(actConfigure, &QAction::toggled, this, &MainWindow::action_toggled);
@@ -144,12 +134,10 @@ void MainWindow::init_actions()
 		act->setCheckable(true);
 		act->setChecked(false );
 	}
-
 }
 
 void MainWindow::init_slots  ()
 {
-
 	connect(zrm_widget->main_display(), &ZrmMainDisplay::method_choose, this, &MainWindow::channel_method_choose);
 	connect(method_chooser, &ZrmMethodChoose::method_choosed, this, &MainWindow::method_choosed    );
 
@@ -167,7 +155,6 @@ void MainWindow::init_slots  ()
 
 	connect(zrm_widget, &ZrmWidget::next_channel, zrm_ready, &ZrmReadyWidget::next_channel);
 	connect(zrm_widget, &ZrmWidget::prev_channel, zrm_ready, &ZrmReadyWidget::prev_channel);
-
 }
 
 void MainWindow::install_event_filers  ()
@@ -178,9 +165,6 @@ void MainWindow::install_event_filers  ()
 	}
 }
 
-
-
-
 void MainWindow::init_styles()
 {
 	QStringList stl = QStyleFactory::keys();
@@ -190,7 +174,6 @@ void MainWindow::init_styles()
 	}
 }
 
-
 void MainWindow::set_style(const QString& styleName)
 {
 	if (QStyleFactory::keys().contains(styleName))
@@ -198,8 +181,6 @@ void MainWindow::set_style(const QString& styleName)
 		qApp->setStyle(QStyleFactory::create(styleName));
 	}
 }
-
-
 
 QString MainWindow::connectivity_file_name()
 {
@@ -210,8 +191,6 @@ QString MainWindow::window_param_file_name()
 {
 	return ZrmDataSource::config_file_name("-config");
 }
-
-
 
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
@@ -258,7 +237,6 @@ void MainWindow::slot_dev_error(QString error_string)
 	write_log(QtMsgType::QtCriticalMsg, error_string);
 }
 
-
 void MainWindow::sl_style_sheet_triggered()
 {
 	QString file_name =
@@ -278,8 +256,6 @@ void MainWindow::sl_style_sheet_triggered()
 		}
 	}
 }
-
-
 
 /*Обработка завершения выбора метода*/
 void MainWindow::method_choosed()
@@ -307,7 +283,6 @@ void MainWindow::method_choosed()
 	else
 		actReadyView->setChecked(true);
 }
-
 
 void MainWindow::set_method_all()
 {
@@ -337,7 +312,6 @@ void MainWindow::set_method_all()
 
 			}
 		}
-
 	}
 }
 
@@ -349,7 +323,6 @@ void MainWindow::start_all     ()
 		if (zrm)
 			zrm->start();
 	}
-
 }
 
 void MainWindow::stop_all      ()
@@ -361,7 +334,6 @@ void MainWindow::stop_all      ()
 			zrm->stop();
 	}
 }
-
 
 void MainWindow::configure_apply()
 {
@@ -385,7 +357,6 @@ void MainWindow::style_apply()
 	layout()->update();
 }
 
-
 void MainWindow::set_font_for_edit()
 {
 	SignalBlocker sb(style_frame->findChildren<QWidget*>());
@@ -395,7 +366,6 @@ void MainWindow::set_font_for_edit()
 	font_size->setValue(font_info.pointSize());
 	fontComboBox->setCurrentFont(font());
 }
-
 
 QFont MainWindow::edit_font(const QFont& f)
 {
@@ -418,12 +388,7 @@ void MainWindow::edit_font_changed(const QFont& font)
 	for (auto w : gb_ctrls->findChildren<QWidget*>())
 		w->setFont(f);
 	gb_ctrls->layout()->update();
-
 }
-
-
-
-
 
 constexpr const char* cfg_style          = "style";
 constexpr const char* cfg_font_name      = "font-name";
@@ -444,13 +409,11 @@ void MainWindow::write_config       ()
 	QJsonObject jobj;
 	QFontInfo fi(this->font());
 
-
 	jobj[cfg_style]          = style_select->currentText();
 	jobj[cfg_font_name   ]   = fi.family();
 	jobj[cfg_font_size   ]   = fi.pixelSize();
 	jobj[cfg_font_bold   ]   = fi.bold();
 	jobj[cfg_font_italic ]   = fi.italic();
-
 
 	jobj[cfg_xpos        ]   = x();
 	jobj[cfg_ypos        ]   = y();
@@ -461,11 +424,9 @@ void MainWindow::write_config       ()
 	jobj[cfg_zrm_method  ]   = zrm_widget->method_is_showing();
 	jobj[cfg_zrm_additional] = zrm_widget->additional_is_showing();
 
-
 	QFile file(cname);
 	if (file.open(QFile::WriteOnly | QFile::Truncate))
 	{
-
 		QJsonDocument jdoc(jobj);
 		file.write(jdoc.toJson());
 		file.close();
@@ -550,7 +511,6 @@ void MainWindow::set_default_config()
 	style_select->setCurrentText(QString("Fusion"));
 }
 
-
 bool MainWindow::eventFilter(QObject* target, QEvent* event)
 {
 	if (event->type() == QEvent::KeyPress)
@@ -574,12 +534,10 @@ bool MainWindow::eventFilter(QObject* target, QEvent* event)
 	return QObject::eventFilter(target, event);
 }
 
-
 void MainWindow::orientation_changed(Qt::ScreenOrientation screen_orient)
 {
 	Q_UNUSED(screen_orient)
 }
-
 
 void MainWindow::channel_method_choose()
 {
@@ -587,15 +545,15 @@ void MainWindow::channel_method_choose()
 	actChooseMethod->setChecked(true);
 }
 
-
 void MainWindow::method_editor_activate(bool checked)
 {
 	if (!m_edit_tool_bar)
 	{
 		m_edit_tool_bar = method_editor->get_toolbar();
-		addToolBar(Qt::ToolBarArea::TopToolBarArea, m_edit_tool_bar);
-
+		if (m_edit_tool_bar)
+			addToolBar(Qt::ToolBarArea::TopToolBarArea, m_edit_tool_bar);
 	}
+
 	if (checked)
 	{
 		stackedWidget->setCurrentWidget(method_editor_page);
@@ -606,9 +564,7 @@ void MainWindow::method_editor_activate(bool checked)
 	{
 		m_edit_tool_bar->setVisible(false);
 		method_editor->save_user_values();
-		//removeToolBar(m_edit_tool_bar);
 	}
-	//method_editor->setVisible(checked);
 }
 
 void MainWindow::method_chooser_activate(bool checked)
@@ -693,7 +649,6 @@ void MainWindow::channel_activated(zrm::ZrmConnectivity* conn, unsigned channel)
 	actMethod_Editor->setEnabled(conn && channel);
 	actChooseMethod ->setEnabled(conn && channel);
 	actZrmView->setEnabled      (conn && channel);
-	//qDebug()<<Q_FUNC_INFO<<sender();
 	actZrmView->setChecked(true);
 }
 
