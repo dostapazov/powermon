@@ -120,6 +120,7 @@ void ZrmMethodEditor::item_set_inactive(QTreeWidgetItem* prev)
 			{
 				do_undo_changes(prev);
 			}
+
 		}
 	}
 }
@@ -167,9 +168,11 @@ void ZrmMethodEditor::onCurrentItemChanged (QTreeWidgetItem* current, QTreeWidge
 	{
 		SignalBlocker sb(findChildren<QWidget*>());
 		item_set_inactive(prev);
-		actDelete->setEnabled(current);
 		auto table_type = methods_tree->item_table(current);
 		actionsEnable(table_type);
+		actDelete->setEnabled(current);
+		actApply->setEnabled(false);
+		actUndo->setEnabled(false);
 
 		if (actLink->isChecked())
 		{
@@ -418,17 +421,7 @@ void ZrmMethodEditor::on_actLink_toggled(bool checked)
 	param_widget->setVisible(checked);
 	frToolBar1->setVisible(!checked);
 	bAbstractMethod->setEnabled(!checked);
-	//methods_tree->show_method_params(!checked);
-//	actAllMethods->setEnabled(!checked);
-//	actMethodEdit->setVisible(!checked);
-//	actApply->setVisible     (!checked);
-//	actUndo->setVisible      (!checked);
-//	actNewType->setVisible   (!checked);
-//	actNewModel->setVisible  (!checked);
-//	actNewMethod->setVisible (!checked);
-//	actDelete->setVisible    (!checked);
 }
-
 
 void ZrmMethodEditor::createNew()
 {
@@ -554,6 +547,13 @@ void ZrmMethodEditor::createNewChild()
 	tw->setCurrentItem(item);
 }
 
+QTreeWidgetItem* ZrmMethodEditor::getParentByTable(QTreeWidgetItem* item, ZrmMethodsTree::table_types_t type)
+{
+	while (ZrmMethodsTree::item_table( item) > type)
+		item = item->parent();
+	return item;
+}
+
 void ZrmMethodEditor::createNewType()
 {
 	QString item_text = tr("Новый тип");
@@ -568,7 +568,22 @@ void ZrmMethodEditor::createNewType()
 
 void ZrmMethodEditor::createNewModel()
 {
-	QTreeWidgetItem* typeItem = nullptr;
+	QTreeWidgetItem* parent = getParentByTable( methods_tree->current_item(), ZrmMethodsTree::table_types_t::table_types);
+	if (parent)
+	{
+		qDebug() << parent->text(0);
+		QTreeWidget* tw = methods_tree->treeWidget();
+		tw->expandItem(parent);
+
+		QString item_text = tr("Новая модель");
+		int t_type = ZrmMethodsTree::table_models;
+		QTreeWidgetItem* item = ZrmMethodsTree::new_tree_item(item_text, t_type, 0, false);
+		set_edit_enable(item, true, true, true);
+		setItemNew(item, true);
+		parent->addChild(item);
+		tw->setCurrentItem(item);
+
+	}
 }
 
 void ZrmMethodEditor::createNewMethod()
@@ -595,16 +610,18 @@ void ZrmMethodEditor::switch_edit_widget(bool edit_param)
 		param_widget->setCurrentWidget(empty_page);
 		param_widget->setVisible(false);
 		fr_methods->setVisible(true);
+		methods_tree->treeWidget()->setFocus();
+
 	}
 //	param_widget->adjustSize();
 //	layout()->update();
-	actAllMethods->setEnabled(!edit_param);
-	actLink->setEnabled(!edit_param);
-	actNewType->setVisible(!edit_param);
-	actNewModel->setVisible(!edit_param);
-	actNewMethod->setVisible(!edit_param);
-	actDelete->setVisible(!edit_param);
-	actCopyModel->setVisible(!edit_param);
+//	actAllMethods->setEnabled(!edit_param);
+//	actLink->setEnabled(!edit_param);
+//	actNewType->setVisible(!edit_param);
+//	actNewModel->setVisible(!edit_param);
+//	actNewMethod->setVisible(!edit_param);
+//	actDelete->setVisible(!edit_param);
+//	actCopyModel->setVisible(!edit_param);
 #ifdef Q_OS_ANDROID
 	QWidget* p = parentWidget();
 	while (p->parentWidget())

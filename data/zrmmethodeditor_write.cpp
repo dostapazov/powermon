@@ -61,6 +61,7 @@ bool ZrmMethodEditor::write_changes     (QTreeWidgetItem* item)
 	if (ret)
 	{
 		clr_change_mask(item);
+		setItemNew(item, false);
 	}
 	return ret;
 }

@@ -159,7 +159,7 @@ QSqlQuery ZrmDatabase::read_all_methods       (QSqlDatabase& db )
 	QString qtext =
 		"select id  , c_name, n_volt_rate, n_current_rate"
 		", n_duration, n_cycle_count, n_user_volt, n_user_capacity "
-		"from t_method ";
+		"from t_method order by c_name";
 	if (!exec_query(query, qtext))
 		query.clear();
 	return query;

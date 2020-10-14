@@ -297,7 +297,7 @@ void ZrmMethodsTree::read_types()
 bool ZrmMethodsTree::read_model(QTreeWidgetItem* item)
 {
 	bool ret = false;
-	QString qtext = "select  id,c_name,n_voltage, n_capacity from t_model  where t_model.id = :id  ";
+	QString qtext = "select  id,c_name,n_voltage, n_capacity from t_model  where t_model.id = :id ";
 	QSqlQuery query ( db );
 	query_args_t args;
 	args[":id"] = item->data(0, role_id);

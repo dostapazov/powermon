@@ -49,9 +49,7 @@ private slots:
 	void createNew();
 	void createNewChild();
 
-
-protected:
-
+private:
 	void connect_signals();
 	void item_set_inactive(QTreeWidgetItem* prev);
 	bool set_change_mask(QTreeWidgetItem* item, int mask, bool set);
@@ -77,8 +75,9 @@ protected:
 	void do_undo_changes(QTreeWidgetItem* item);
 	void do_delete_item(QTreeWidgetItem* item, bool select_next);
 	static int change_mask(const QTreeWidgetItem* item) ;
-private:
+
 	void setupButtons();
+	static QTreeWidgetItem* getParentByTable(QTreeWidgetItem* item, ZrmMethodsTree::table_types_t type);
 	zrm_edit_method_t zrm_method;
 	QSqlError         m_last_error;
 };
