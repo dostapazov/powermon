@@ -64,10 +64,13 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>123</string>
+           <string/>
           </property>
           <property name="maxLength">
            <number>256</number>
+          </property>
+          <property name="placeholderText">
+           <string>Введите наименование</string>
           </property>
          </widget>
         </item>
@@ -700,8 +703,8 @@
              </property>
              <property name="iconSize">
               <size>
-               <width>24</width>
-               <height>24</height>
+               <width>48</width>
+               <height>48</height>
               </size>
              </property>
              <property name="checkable">
@@ -738,8 +741,8 @@
              </property>
              <property name="iconSize">
               <size>
-               <width>24</width>
-               <height>24</height>
+               <width>48</width>
+               <height>48</height>
               </size>
              </property>
              <property name="checkable">
@@ -779,8 +782,8 @@
              </property>
              <property name="iconSize">
               <size>
-               <width>24</width>
-               <height>24</height>
+               <width>48</width>
+               <height>48</height>
               </size>
              </property>
              <property name="checkable">
@@ -823,8 +826,8 @@
              </property>
              <property name="iconSize">
               <size>
-               <width>24</width>
-               <height>24</height>
+               <width>48</width>
+               <height>48</height>
               </size>
              </property>
              <property name="checkable">

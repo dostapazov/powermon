@@ -27,69 +27,69 @@ public:
 	enum column_type_t { column_name, column_voltage, column_capacity };
 
 
-	explicit  ZrmMethodsTree(QWidget* parent = nullptr);
+	explicit ZrmMethodsTree(QWidget* parent = nullptr);
 	~ZrmMethodsTree() override;
-	void      close_database();
-	bool      open_database (zrm::zrm_work_mode_t work_mode, bool _abstract_methods);
+	void close_database();
+	bool open_database (zrm::zrm_work_mode_t work_mode, bool _abstract_methods);
 	zrm::zrm_work_mode_t open_as() {return m_work_mode;}
-	bool      abstract_methods()  {return m_abstract_methods;}
+	bool abstract_methods()  {return m_abstract_methods;}
 	QSqlError last_error();
-	virtual   bool item_edit_enable(const QModelIndex& index);
-	bool      get_method(zrm::zrm_method_t& zrm_method, QTextCodec* codec, QString* model_name = Q_NULLPTR);
-	bool      get_method(QTreeWidgetItem* item, zrm::zrm_method_t& zrm_method, QTextCodec* codec, QString* model_name = Q_NULLPTR);
-	bool      method_valid(QTreeWidgetItem* item);
-	double    get_method_param  (const QTreeWidgetItem* item, column_type_t param);
-	void      set_method_param  (QTreeWidgetItem* item, column_type_t param, double value);
-	bool      read_type         (QTreeWidgetItem* item);
-	bool      read_model        (QTreeWidgetItem* item);
-	bool      read_method       (QTreeWidgetItem* item);
-	void      show_method_params(bool enable);
+	virtual bool item_edit_enable(const QModelIndex& index);
+	bool get_method(zrm::zrm_method_t& zrm_method, QTextCodec* codec, QString* model_name = Q_NULLPTR);
+	bool get_method(QTreeWidgetItem* item, zrm::zrm_method_t& zrm_method, QTextCodec* codec, QString* model_name = Q_NULLPTR);
+	bool method_valid(QTreeWidgetItem* item);
+	double get_method_param  (const QTreeWidgetItem* item, column_type_t param);
+	void set_method_param  (QTreeWidgetItem* item, column_type_t param, double value);
+	bool read_type         (QTreeWidgetItem* item);
+	bool read_model        (QTreeWidgetItem* item);
+	bool read_method       (QTreeWidgetItem* item);
+	void show_method_params(bool enable);
 
 	QString   get_stage_desctipt(unsigned stage_id);
 
 	QAbstractItemView::SelectionMode multi_selection();
-	void      multi_selection_enable(QAbstractItemView::SelectionMode mode);
+	void multi_selection_enable(QAbstractItemView::SelectionMode mode);
 
 
 	QTreeWidgetItem* search_method_by_id(QTreeWidgetItem* item, const QVariant& method_id);
-	void      save_user_values();
+	void save_user_values();
 
 
 	static QTreeWidgetItem* new_tree_item  (const QString& text, unsigned table_type, const QVariant& id, bool prepare_expandable);
-	static void              remove_children(QTreeWidgetItem* parent, bool one_retain);
+	static void remove_children(QTreeWidgetItem* parent, bool one_retain);
 	static QTreeWidgetItem* copy_tree_item(QTreeWidgetItem* src, QTreeWidgetItem* new_parent );
-	QString           number(double value, int prec = 2);
-	void              number_string(QString& str, bool to_dot);
+	QString number(double value, int prec = 2);
+	void number_string(QString& str, bool to_dot);
 
 
 	QSqlDatabase& database() {return db;}
 	QTreeWidgetItem* current_item();
 	QTreeWidget*      treeWidget  ();
 	static QVariant item_id(QTreeWidgetItem* item);
-	static void     set_item_id   (QTreeWidgetItem* item, const QVariant& id);
-	static unsigned item_table    (QTreeWidgetItem* item);
+	static void set_item_id   (QTreeWidgetItem* item, const QVariant& id);
+	static table_types_t item_table    (QTreeWidgetItem* item);
 	static double   item_capacity (QTreeWidgetItem* item);
 	static double   item_voltage  (QTreeWidgetItem* item);
 
 
 signals:
-	void      method_selected     (QTreeWidgetItem* item);
-	void      method_param_changed(QTreeWidgetItem* item);
-	void      current_item_changed(QTreeWidgetItem* current, QTreeWidgetItem* previous);
-	void      item_changed        (QTreeWidgetItem* current, int column);
-	void      database_open       (bool success);
+	void method_selected     (QTreeWidgetItem* item);
+	void method_param_changed(QTreeWidgetItem* item);
+	void current_item_changed(QTreeWidgetItem* current, QTreeWidgetItem* previous);
+	void item_changed        (QTreeWidgetItem* current, int column);
+	void database_open       (bool success);
 protected:
-	void      fill_tree      ();
+	void fill_tree      ();
 
-	void      read_types           ();
-	void      read_models          (QTreeWidgetItem* item);
-	void      read_methods         (QTreeWidgetItem* item);
-	void      read_abstract_methods();
-	void      method_user_data_to_real(QTreeWidgetItem* item) ;
+	void read_types           ();
+	void read_models          (QTreeWidgetItem* item);
+	void read_methods         (QTreeWidgetItem* item);
+	void read_abstract_methods();
+	void method_user_data_to_real(QTreeWidgetItem* item) ;
 
 	size_t    read_stages(QTreeWidgetItem* item, zrm::stages_t& stages);
 	size_t    read_stages(zrm::stages_t& stages);
-	void      read_stages(QTreeWidgetItem* item);
+	void read_stages(QTreeWidgetItem* item);
 
 
 
@@ -98,8 +98,8 @@ protected:
 	QSqlDatabase         db;
 	QSqlError            m_last_error;
 	zrm::zrm_work_mode_t m_work_mode         = zrm::charger;
-	bool                 m_abstract_methods  = false;
-	bool                 m_method_expandable = false;//Разрешить чтение этапов
+	bool m_abstract_methods  = false;
+	bool m_method_expandable = false;//Разрешить чтение этапов
 	friend class         QItemDelegate;
 
 private slots:
@@ -149,19 +149,22 @@ inline QTreeWidgetItem* ZrmMethodsTree::current_item()
 
 inline QVariant ZrmMethodsTree::item_id   (QTreeWidgetItem* item)
 {
-	return item ? item->data(column_name, role_id) : QVariant();
+	return item ? item->data(static_cast<unsigned>(column_type_t::column_name), role_id) : QVariant();
 }
 
 inline void ZrmMethodsTree::set_item_id   (QTreeWidgetItem* item, const QVariant& id)
 {
 	if ( item )
-		item->setData( column_name, role_id, id);
+		item->setData( static_cast<unsigned>(column_type_t::column_name), role_id, id);
 }
 
 
-inline unsigned ZrmMethodsTree::item_table(QTreeWidgetItem* item)
+inline ZrmMethodsTree::table_types_t ZrmMethodsTree::item_table(QTreeWidgetItem* item)
 {
-	return item ? item->data(column_name, role_table).toUInt() : unsigned(table_unknown);
+	return item ?
+		   static_cast<table_types_t>( item->data(static_cast<unsigned>(column_type_t::column_name), role_table).toUInt())
+		   :
+		   table_types_t::table_unknown;
 }
 
 inline QTreeWidget*      ZrmMethodsTree::treeWidget  ()
@@ -171,12 +174,12 @@ inline QTreeWidget*      ZrmMethodsTree::treeWidget  ()
 
 inline double  ZrmMethodsTree::item_capacity(QTreeWidgetItem* item)
 {
-	return item ? item->data(column_name, role_capacity).toDouble() : .0;
+	return item ? item->data(static_cast<int>(column_type_t::column_name), role_capacity).toDouble() : .0;
 }
 
 inline double  ZrmMethodsTree::item_voltage(QTreeWidgetItem* item)
 {
-	return item ? item->data(column_name, role_voltage).toDouble() : .0;
+	return item ? item->data(static_cast<int>(column_type_t::column_name), role_voltage).toDouble() : .0;
 }
 
 #endif // ZRMMETHODSTHREE_H

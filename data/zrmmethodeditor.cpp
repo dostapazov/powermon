@@ -2,6 +2,7 @@
 #include <signal_bloker.hpp>
 #include <qstring.h>
 #include <qdesktopwidget.h>
+#include <QMenu>
 
 
 
@@ -9,8 +10,8 @@ ZrmMethodEditor::ZrmMethodEditor(QWidget* parent) :
 	QWidget(parent)
 {
 	setupUi(this);
+	adjustUi();
 	methods_tree->setFont(font());
-
 	param_widget->setVisible(false);
 	stages_page->set_methods_tree(methods_tree);
 	param_widget->setCurrentWidget(stages_page);
@@ -18,8 +19,8 @@ ZrmMethodEditor::ZrmMethodEditor(QWidget* parent) :
 	methods_abstract->show_method_params(false);
 	connect_signals();
 	setupButtons();
-}
 
+}
 
 void ZrmMethodEditor::connect_signals()
 {
@@ -27,14 +28,16 @@ void ZrmMethodEditor::connect_signals()
 	connect(actAllMethods, &QAction::toggled, this, &ZrmMethodEditor::act_all_methods       );
 	connect(actCopyModel, &QAction::triggered, this, &ZrmMethodEditor::copy_model            );
 
+	connect(actNewType, &QAction::triggered, this, &ZrmMethodEditor::createNewType);
+	connect(actNewModel, &QAction::triggered, this, &ZrmMethodEditor::createNewModel);
+	connect(actNewMethod, &QAction::triggered, this, &ZrmMethodEditor::createNewMethod);
+
 	connect(tbUnlinkMethod, &QAbstractButton::clicked, this, &ZrmMethodEditor::on_actDelete_triggered);
 	connect(tbLinkMethod, &QAbstractButton::clicked, this, &ZrmMethodEditor::link_abstract_method  );
 	connect(stages_page, &ZrmStagesEditor::method_changed, this, &ZrmMethodEditor::sl_method_changed);
 
-
-
-	connect(methods_tree, &ZrmMethodsTree::current_item_changed, this, &ZrmMethodEditor::slot_current_item_changed);
-	connect(methods_tree, &ZrmMethodsTree::item_changed, this, &ZrmMethodEditor::slot_item_data_changed);
+	connect(methods_tree, &ZrmMethodsTree::current_item_changed, this, &ZrmMethodEditor::onCurrentItemChanged);
+	connect(methods_tree, &ZrmMethodsTree::item_changed, this, &ZrmMethodEditor::onItemDataChanged);
 	connect(methods_abstract, &ZrmMethodsTree::current_item_changed, this, &ZrmMethodEditor::abstract_method_changed);
 }
 
@@ -42,33 +45,39 @@ bool ZrmMethodEditor::open_db(zrm::zrm_work_mode_t as_charger, bool all_methods)
 {
 	bool ret =  methods_tree->open_database(as_charger, all_methods);
 	return ret;
-
 }
 
 void ZrmMethodEditor::setupButtons()
 {
+	QMenu* menu = new QMenu;
+	menu->addAction(actNewType);
+	menu->addAction(actNewModel);
+	menu->addAction(actNewMethod);
+	bCreate->setMenu(menu);
 	bAbstractMethod->setDefaultAction(actAllMethods);
 	bLinkMethod->setDefaultAction(actLink);
 	bEdit->setDefaultAction(actMethodEdit);
 	bApply->setDefaultAction(actApply);
 	bUndo->setDefaultAction(actUndo);
 	bDelete->setDefaultAction(actDelete);
-	bNew->setDefaultAction(actNew);
-	bNewChild->setDefaultAction(actNewChild);
 	bCopyModel->setDefaultAction(actCopyModel);
 }
 
-#ifdef Q_OS_ANDROID
-void ZrmMethodEditor::setup_android_ui()
+
+void ZrmMethodEditor::adjustUi()
 {
-//    auto tb_list =  findChildren<QToolButton*>();
-//    QSize sz(96,96);
-//    for(auto tb: tb_list)
-//    {
-//        tb->setIconSize(sz);
-//    }
-}
+#ifdef Q_OS_ANDROID
+	QSize sz(48, 48);
+#else
+	QSize sz(32, 32);
 #endif
+	auto tb_list =  findChildren<QToolButton*>();
+	for (auto tb : tb_list)
+	{
+		tb->setIconSize(sz);
+	}
+}
+
 
 
 void ZrmMethodEditor::act_all_methods(bool checked)
@@ -78,7 +87,8 @@ void ZrmMethodEditor::act_all_methods(bool checked)
 	QTreeWidgetItem* item = tw->topLevelItemCount() ? tw->topLevelItem(0) : Q_NULLPTR;
 	tw->setCurrentItem(item);
 	actLink->setEnabled(!checked);
-	actNewChild->setVisible(!checked);
+	actNewModel->setVisible(!checked);
+	actNewType->setVisible(!checked);
 }
 
 
@@ -102,7 +112,7 @@ void ZrmMethodEditor::item_set_inactive(QTreeWidgetItem* prev)
 		set_edit_enable(prev, false, false, false);
 		if (change_mask(prev))
 		{
-			if (item_is_new(prev))
+			if (isItemNew(prev))
 			{
 				do_delete_item(prev, false);
 			}
@@ -114,7 +124,44 @@ void ZrmMethodEditor::item_set_inactive(QTreeWidgetItem* prev)
 	}
 }
 
-void ZrmMethodEditor::slot_current_item_changed        (QTreeWidgetItem* current, QTreeWidgetItem* prev)
+void ZrmMethodEditor::actionsEnable(ZrmMethodsTree::table_types_t tableType)
+{
+	bool enableUnlink = false;
+	bool enableMethodEdit = false;
+	bool enableCopy = false;
+	bool enableCreateModel = false;
+	bool enableCreateMethod = false;
+
+
+	switch (tableType)
+	{
+		case ZrmMethodsTree::table_method :
+			enableUnlink = true;
+			enableMethodEdit = true;
+			enableCreateMethod = true;
+			enableCreateModel = true;
+			break;
+		case ZrmMethodsTree::table_models :
+			enableCopy = true;
+			enableCreateModel = true;
+			enableCreateMethod = true;
+			break;
+		case ZrmMethodsTree::table_types :
+			enableCreateModel = true;
+			break;
+		default:
+			break;
+	}
+
+	tbUnlinkMethod->setEnabled( enableUnlink );
+	actMethodEdit->setEnabled( enableMethodEdit );
+	actCopyModel->setEnabled( enableCopy );
+	actNewMethod->setEnabled(enableCreateMethod);
+	actNewModel->setEnabled(enableCreateModel);
+
+}
+
+void ZrmMethodEditor::onCurrentItemChanged (QTreeWidgetItem* current, QTreeWidgetItem* prev)
 {
 	if (current != prev)
 	{
@@ -122,9 +169,7 @@ void ZrmMethodEditor::slot_current_item_changed        (QTreeWidgetItem* current
 		item_set_inactive(prev);
 		actDelete->setEnabled(current);
 		auto table_type = methods_tree->item_table(current);
-		tbUnlinkMethod->setEnabled  ( table_type == ZrmMethodsTree::table_method );
-		actMethodEdit->setEnabled  ( table_type == ZrmMethodsTree::table_method );
-		actCopyModel->setEnabled  ( table_type == ZrmMethodsTree::table_models );
+		actionsEnable(table_type);
 
 		if (actLink->isChecked())
 		{
@@ -136,7 +181,6 @@ void ZrmMethodEditor::slot_current_item_changed        (QTreeWidgetItem* current
 			switch (table_type)
 			{
 				case ZrmMethodsTree::table_models:
-
 					set_edit_enable(current, true, true, true);
 					setup_akb(current);
 					break;
@@ -215,7 +259,7 @@ void ZrmMethodEditor::setup_method(QTreeWidgetItem* item)
  */
 
 
-void ZrmMethodEditor::slot_item_data_changed                  (QTreeWidgetItem* item, int column)
+void ZrmMethodEditor::onItemDataChanged                  (QTreeWidgetItem* item, int column)
 {
 
 	QString item_text = item->text(column);
@@ -258,6 +302,11 @@ void ZrmMethodEditor::on_actApply_triggered()
 void ZrmMethodEditor::do_undo_changes(QTreeWidgetItem* item )
 {
 	SignalBlocker sb(findChildren<QWidget*>());
+	if (isItemNew(item))
+	{
+		do_delete_item(item, true);
+		return;
+	}
 
 	switch (methods_tree->item_table(item))
 	{
@@ -273,6 +322,7 @@ void ZrmMethodEditor::do_undo_changes(QTreeWidgetItem* item )
 			break;
 	}
 	clr_change_mask( item );
+	onCurrentItemChanged(item, Q_NULLPTR);
 }
 
 void ZrmMethodEditor::on_actUndo_triggered()
@@ -280,7 +330,6 @@ void ZrmMethodEditor::on_actUndo_triggered()
 	//Отменить изменения
 	auto item = methods_tree->current_item();
 	do_undo_changes(item);
-	slot_current_item_changed(item, Q_NULLPTR);
 }
 
 
@@ -288,7 +337,7 @@ void ZrmMethodEditor::do_delete_item(QTreeWidgetItem* item, bool select_next)
 {
 	bool ret = true;
 
-	if (!item_is_new(item))
+	if (!isItemNew(item))
 	{
 		switch (methods_tree->item_table(item))
 		{
@@ -305,6 +354,7 @@ void ZrmMethodEditor::do_delete_item(QTreeWidgetItem* item, bool select_next)
 				break;
 		}
 	}
+
 	if (ret)
 	{
 		QTreeWidget* tw = item->treeWidget();
@@ -353,37 +403,99 @@ void ZrmMethodEditor::on_actLink_toggled(bool checked)
 	// Связать
 	//gb_actions->setVisible(!checked)
 
-	param_widget->setVisible(false);
-	fr_methods->setVisible(true);
+
 	if (checked)
 	{
 		stages_page->setVisible(false);
 		param_widget->setCurrentWidget(link_page);
 		methods_abstract->open_database( methods_tree->open_as(), true);
-		actMethodEdit->setChecked(false);
-		param_widget->setVisible(true);
-
 	}
 	else
 	{
 		param_widget->setCurrentWidget(stages_page);
-		slot_current_item_changed(this->methods_tree->current_item(), Q_NULLPTR);
+		onCurrentItemChanged(this->methods_tree->current_item(), Q_NULLPTR);
 	}
-
+	param_widget->setVisible(checked);
+	frToolBar1->setVisible(!checked);
+	bAbstractMethod->setEnabled(!checked);
 	//methods_tree->show_method_params(!checked);
-	actAllMethods->setEnabled(!checked);
-	actMethodEdit->setVisible(!checked);
-	actApply->setVisible     (!checked);
-	actUndo->setVisible      (!checked);
-	actNew->setVisible       (!checked);
-	actNewChild->setVisible  (!checked);
-	actDelete->setVisible    (!checked);
+//	actAllMethods->setEnabled(!checked);
+//	actMethodEdit->setVisible(!checked);
+//	actApply->setVisible     (!checked);
+//	actUndo->setVisible      (!checked);
+//	actNewType->setVisible   (!checked);
+//	actNewModel->setVisible  (!checked);
+//	actNewMethod->setVisible (!checked);
+//	actDelete->setVisible    (!checked);
 }
 
 
-
-void ZrmMethodEditor::create_new(bool child)
+void ZrmMethodEditor::createNew()
 {
+//	bool child = false;
+//	QTreeWidgetItem* cur_item = child ? methods_tree->current_item() : Q_NULLPTR;
+//	auto t_type  =  ZrmMethodsTree::item_table(cur_item);
+
+//	if (t_type == ZrmMethodsTree::table_unknown)
+//	{
+//		child  = false;
+//		t_type = ZrmMethodsTree::table_types;
+//	}
+
+//	if (child && t_type == ZrmMethodsTree::table_method)
+//		child = false;
+
+//	if (child)
+//		++t_type;
+
+//	QString item_text;
+
+//	switch (t_type)
+//	{
+//		case ZrmMethodsTree::table_types:
+//			item_text = tr("Новый тип");
+//			break;
+//		case ZrmMethodsTree::table_models:
+//			item_text = tr("Новая модель");
+//			break;
+//		default:
+//			item_text = tr("Новый метод");
+//			break;
+//	}
+
+//	QTreeWidgetItem* item = ZrmMethodsTree::new_tree_item(item_text, t_type, 0, false);
+//	bool edit_params = t_type == ZrmMethodsTree::table_models || ( t_type == ZrmMethodsTree::table_method && actAllMethods->isChecked());
+//	if (edit_params)
+//	{
+//		QString str = "?";
+//		item->setText(ZrmMethodsTree::column_voltage, str);
+//		item->setText(ZrmMethodsTree::column_capacity, str);
+//	}
+//	set_edit_enable(item, true, edit_params, edit_params);
+//	item_new_set(item, true);
+
+//	QTreeWidget* tw = methods_tree->treeWidget();
+//	if (cur_item && !child )
+//		cur_item =  cur_item->parent();
+//	if (cur_item)
+//	{
+//		if (!cur_item->isExpanded())
+//		{
+//			cur_item->setExpanded(true);
+//			qApp->processEvents();
+//		}
+//		cur_item->addChild(item);
+//	}
+
+//	else
+//		tw->addTopLevelItem(item);
+//	tw->setCurrentItem(item);
+}
+
+
+void ZrmMethodEditor::createNewChild()
+{
+	bool child = true;
 	QTreeWidgetItem* cur_item = child ? methods_tree->current_item() : Q_NULLPTR;
 	auto t_type  =  ZrmMethodsTree::item_table(cur_item);
 
@@ -396,8 +508,8 @@ void ZrmMethodEditor::create_new(bool child)
 	if (child && t_type == ZrmMethodsTree::table_method)
 		child = false;
 
-	if (child)
-		++t_type;
+//	if (child)
+//		++t_type;
 
 	QString item_text;
 
@@ -423,7 +535,7 @@ void ZrmMethodEditor::create_new(bool child)
 		item->setText(ZrmMethodsTree::column_capacity, str);
 	}
 	set_edit_enable(item, true, edit_params, edit_params);
-	item_new_set(item, true);
+	setItemNew(item, true);
 
 	QTreeWidget* tw = methods_tree->treeWidget();
 	if (cur_item && !child )
@@ -437,23 +549,34 @@ void ZrmMethodEditor::create_new(bool child)
 		}
 		cur_item->addChild(item);
 	}
-
 	else
 		tw->addTopLevelItem(item);
 	tw->setCurrentItem(item);
 }
 
-void ZrmMethodEditor::on_actNew_triggered()
+void ZrmMethodEditor::createNewType()
 {
-	//Создание нового элемента
-	create_new(false);
+	QString item_text = tr("Новый тип");
+	int t_type = ZrmMethodsTree::table_types;
+	QTreeWidgetItem* item = ZrmMethodsTree::new_tree_item(item_text, t_type, 0, false);
+	set_edit_enable(item, true, false, false);
+	setItemNew(item, true);
+	QTreeWidget* tw = methods_tree->treeWidget();
+	tw->addTopLevelItem(item);
+	tw->setCurrentItem(item);
 }
 
-void ZrmMethodEditor::on_actNewChild_triggered()
+void ZrmMethodEditor::createNewModel()
 {
-	//Создание нового подчиненного
-	create_new(true);
+	QTreeWidgetItem* typeItem = nullptr;
 }
+
+void ZrmMethodEditor::createNewMethod()
+{
+
+}
+
+
 
 
 void ZrmMethodEditor::switch_edit_widget(bool edit_param)
@@ -473,12 +596,13 @@ void ZrmMethodEditor::switch_edit_widget(bool edit_param)
 		param_widget->setVisible(false);
 		fr_methods->setVisible(true);
 	}
-	param_widget->adjustSize();
-	layout()->update();
+//	param_widget->adjustSize();
+//	layout()->update();
 	actAllMethods->setEnabled(!edit_param);
 	actLink->setEnabled(!edit_param);
-	actNew->setVisible(!edit_param);
-	actNewChild->setVisible(!edit_param);
+	actNewType->setVisible(!edit_param);
+	actNewModel->setVisible(!edit_param);
+	actNewMethod->setVisible(!edit_param);
 	actDelete->setVisible(!edit_param);
 	actCopyModel->setVisible(!edit_param);
 #ifdef Q_OS_ANDROID

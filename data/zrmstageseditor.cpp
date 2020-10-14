@@ -38,6 +38,7 @@ ZrmStagesEditor::ZrmStagesEditor(QWidget* parent) :
 {
 	setupUi(this);
 
+
 	QHeaderView* hdr = stages_list->header();
 	hdr->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
 	hdr->setSectionResizeMode(stage_descr_column, QHeaderView::ResizeMode::ResizeToContents);
