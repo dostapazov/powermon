@@ -41,12 +41,11 @@ private slots:
 	void link_abstract_method();
 	bool unlink_method(QTreeWidgetItem* method_item, bool del);
 
-	void switch_edit_widget(bool edit_param);
+	void switch_edit_widget(bool edit_method);
 	void sl_method_changed(int what);
 	void createNewType();
 	void createNewModel();
 	void createNewMethod();
-	void createNew();
 	void createNewChild();
 
 private:
@@ -62,6 +61,7 @@ private:
 
 	static bool isItemNew(QTreeWidgetItem* item);
 	static void setItemNew(QTreeWidgetItem* item, bool is_new);
+	bool isAbstractMethodMode();
 
 	bool write_changes(QTreeWidgetItem* item);
 	bool write_type(QTreeWidgetItem* item);
@@ -91,6 +91,11 @@ inline void ZrmMethodEditor::setItemNew        (QTreeWidgetItem* item, bool is_n
 {
 	if (item)
 		item->setData(ZrmMethodsTree::column_name, role_new, is_new);
+}
+
+inline bool ZrmMethodEditor::isAbstractMethodMode()
+{
+	return bAbstractMethod->isChecked();
 }
 
 

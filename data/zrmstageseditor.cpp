@@ -219,6 +219,22 @@ void   ZrmStagesEditor::set_capacity(double cap, bool update)
 	}
 }
 
+double ZrmStagesEditor::capacity_percent()
+{
+	return edCapPercent->value();
+}
+
+void ZrmStagesEditor::set_capacity_percent(double perc, bool update)
+{
+	edCapPercent->setValue(perc);
+	if (update && stages_list->topLevelItemCount())
+	{
+		sl_stage_changed(stages_list->currentItem(), Q_NULLPTR);
+		fill_series();
+	}
+
+}
+
 void ZrmStagesEditor::sl_voltage_changed    (double val)
 {
 	set_voltage(val, true);

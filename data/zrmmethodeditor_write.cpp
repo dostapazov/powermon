@@ -114,7 +114,10 @@ bool ZrmMethodEditor::write_method        (QTreeWidgetItem* item)
 	}
 
 	if (ret)
+	{
 		clr_change_mask(item);
+		setItemNew(item, false);
+	}
 	return ret;
 }
 

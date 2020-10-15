@@ -99,6 +99,23 @@
       </widget>
      </item>
      <item>
+      <widget class="QToolButton" name="bCopyModel">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="zrm_data.qrc">
+         <normaloff>:/data/icons/copy_model.png</normaloff>:/data/icons/copy_model.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QFrame" name="frToolBar1">
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -108,7 +125,7 @@
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
-         <widget class="QToolButton" name="bEdit">
+         <widget class="QToolButton" name="bEditMethod">
           <property name="text">
            <string>...</string>
           </property>
@@ -121,29 +138,6 @@
             <width>32</width>
             <height>32</height>
            </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="bCreate">
-          <property name="text">
-           <string>Создать...</string>
-          </property>
-          <property name="icon">
-           <iconset resource="zrm_data.qrc">
-            <normaloff>:/data/icons/new.png</normaloff>:/data/icons/new.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="popupMode">
-           <enum>QToolButton::MenuButtonPopup</enum>
-          </property>
-          <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextBesideIcon</enum>
           </property>
          </widget>
         </item>
@@ -199,19 +193,25 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="bCopyModel">
+         <widget class="QToolButton" name="bCreate">
           <property name="text">
-           <string/>
+           <string>Создать...</string>
           </property>
           <property name="icon">
            <iconset resource="zrm_data.qrc">
-            <normaloff>:/data/icons/copy_model.png</normaloff>:/data/icons/copy_model.png</iconset>
+            <normaloff>:/data/icons/new.png</normaloff>:/data/icons/new.png</iconset>
           </property>
           <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="popupMode">
+           <enum>QToolButton::MenuButtonPopup</enum>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
           </property>
          </widget>
         </item>
@@ -575,7 +575,8 @@
    </property>
    <property name="icon">
     <iconset resource="zrm_data.qrc">
-     <normaloff>:/data/icons/edit.png</normaloff>:/data/icons/edit.png</iconset>
+     <normaloff>:/data/icons/edit.png</normaloff>
+     <normalon>:/data/icons/left.png</normalon>:/data/icons/edit.png</iconset>
    </property>
    <property name="text">
     <string>Редактировать метод</string>

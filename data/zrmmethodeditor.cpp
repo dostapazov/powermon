@@ -56,7 +56,7 @@ void ZrmMethodEditor::setupButtons()
 	bCreate->setMenu(menu);
 	bAbstractMethod->setDefaultAction(actAllMethods);
 	bLinkMethod->setDefaultAction(actLink);
-	bEdit->setDefaultAction(actMethodEdit);
+	bEditMethod->setDefaultAction(actMethodEdit);
 	bApply->setDefaultAction(actApply);
 	bUndo->setDefaultAction(actUndo);
 	bDelete->setDefaultAction(actDelete);
@@ -89,6 +89,7 @@ void ZrmMethodEditor::act_all_methods(bool checked)
 	actLink->setEnabled(!checked);
 	actNewModel->setVisible(!checked);
 	actNewType->setVisible(!checked);
+	actNewMethod->setEnabled(true);
 }
 
 
@@ -151,6 +152,8 @@ void ZrmMethodEditor::actionsEnable(ZrmMethodsTree::table_types_t tableType)
 			enableCreateModel = true;
 			break;
 		default:
+			if (isAbstractMethodMode())
+				enableCreateMethod = true;
 			break;
 	}
 
@@ -234,7 +237,7 @@ void ZrmMethodEditor::setup_method(QTreeWidgetItem* item)
 	set_edit_enable(item, true, is_abstarct, is_abstarct);
 
 	methods_tree->read_method(item);
-
+	stages_page->set_method_id(ZrmMethodsTree::item_id(item));
 	//Разрешаем редактирование
 
 //  QTreeWidgetItem * parent = item->parent() ? item->parent() : item;
@@ -246,10 +249,13 @@ void ZrmMethodEditor::setup_method(QTreeWidgetItem* item)
 	if (qFuzzyIsNull(cap ))
 		cap  = 55;
 
+
 	stages_page->set_voltage ( volt, false);
 	stages_page->set_capacity( cap, false);
+	if (qFuzzyIsNull(stages_page->capacity_percent() ))
+		stages_page->set_capacity_percent(100);
 	stages_page->set_abstract(is_abstarct);
-	stages_page->set_method_id(ZrmMethodsTree::item_id(item));
+
 }
 
 
@@ -404,8 +410,6 @@ void ZrmMethodEditor::on_actDelete_triggered()
 void ZrmMethodEditor::on_actLink_toggled(bool checked)
 {
 	// Связать
-	//gb_actions->setVisible(!checked)
-
 
 	if (checked)
 	{
@@ -420,70 +424,9 @@ void ZrmMethodEditor::on_actLink_toggled(bool checked)
 	}
 	param_widget->setVisible(checked);
 	frToolBar1->setVisible(!checked);
-	bAbstractMethod->setEnabled(!checked);
+	frToolBar2->setEnabled(!checked);
 }
 
-void ZrmMethodEditor::createNew()
-{
-//	bool child = false;
-//	QTreeWidgetItem* cur_item = child ? methods_tree->current_item() : Q_NULLPTR;
-//	auto t_type  =  ZrmMethodsTree::item_table(cur_item);
-
-//	if (t_type == ZrmMethodsTree::table_unknown)
-//	{
-//		child  = false;
-//		t_type = ZrmMethodsTree::table_types;
-//	}
-
-//	if (child && t_type == ZrmMethodsTree::table_method)
-//		child = false;
-
-//	if (child)
-//		++t_type;
-
-//	QString item_text;
-
-//	switch (t_type)
-//	{
-//		case ZrmMethodsTree::table_types:
-//			item_text = tr("Новый тип");
-//			break;
-//		case ZrmMethodsTree::table_models:
-//			item_text = tr("Новая модель");
-//			break;
-//		default:
-//			item_text = tr("Новый метод");
-//			break;
-//	}
-
-//	QTreeWidgetItem* item = ZrmMethodsTree::new_tree_item(item_text, t_type, 0, false);
-//	bool edit_params = t_type == ZrmMethodsTree::table_models || ( t_type == ZrmMethodsTree::table_method && actAllMethods->isChecked());
-//	if (edit_params)
-//	{
-//		QString str = "?";
-//		item->setText(ZrmMethodsTree::column_voltage, str);
-//		item->setText(ZrmMethodsTree::column_capacity, str);
-//	}
-//	set_edit_enable(item, true, edit_params, edit_params);
-//	item_new_set(item, true);
-
-//	QTreeWidget* tw = methods_tree->treeWidget();
-//	if (cur_item && !child )
-//		cur_item =  cur_item->parent();
-//	if (cur_item)
-//	{
-//		if (!cur_item->isExpanded())
-//		{
-//			cur_item->setExpanded(true);
-//			qApp->processEvents();
-//		}
-//		cur_item->addChild(item);
-//	}
-
-//	else
-//		tw->addTopLevelItem(item);
-//	tw->setCurrentItem(item);
-}
 
 
 void ZrmMethodEditor::createNewChild()
@@ -568,10 +511,9 @@ void ZrmMethodEditor::createNewType()
 
 void ZrmMethodEditor::createNewModel()
 {
-	QTreeWidgetItem* parent = getParentByTable( methods_tree->current_item(), ZrmMethodsTree::table_types_t::table_types);
+	QTreeWidgetItem* parent = getParentByTable( methods_tree->current_item(), ZrmMethodsTree::table_types_t::table_models);
 	if (parent)
 	{
-		qDebug() << parent->text(0);
 		QTreeWidget* tw = methods_tree->treeWidget();
 		tw->expandItem(parent);
 
@@ -588,21 +530,38 @@ void ZrmMethodEditor::createNewModel()
 
 void ZrmMethodEditor::createNewMethod()
 {
+	QTreeWidgetItem* parent = getParentByTable( methods_tree->current_item(), ZrmMethodsTree::table_types_t::table_types);
+	QTreeWidget* tw = methods_tree->treeWidget();
+	QString item_text = tr("Новый метод");
+	int t_type = ZrmMethodsTree::table_method;
+	QTreeWidgetItem* item = ZrmMethodsTree::new_tree_item(item_text, t_type, 0, false);
+	set_edit_enable(item, true, false, false);
+	setItemNew(item, true);
+	if (parent)
+	{
+		parent->addChild(item);
+	}
+	else
+		tw->addTopLevelItem(item);
 
+	tw->setCurrentItem(item);
+	actMethodEdit->setChecked(true);
 }
 
 
 
 
-void ZrmMethodEditor::switch_edit_widget(bool edit_param)
+void ZrmMethodEditor::switch_edit_widget(bool edit_method)
 {
-	if (edit_param)
+	if (edit_method)
 	{
 		fr_methods->setVisible(false);
 		stages_page->setVisible(true);
 		setup_method(methods_tree->current_item());
 		param_widget->setCurrentWidget(stages_page);
 		param_widget->setVisible(true);
+		actMethodEdit->setToolTip(tr("Выход из режима редактирования ") + actMethodEdit->shortcut().toString());
+
 	}
 	else
 	{
@@ -611,6 +570,7 @@ void ZrmMethodEditor::switch_edit_widget(bool edit_param)
 		param_widget->setVisible(false);
 		fr_methods->setVisible(true);
 		methods_tree->treeWidget()->setFocus();
+		actMethodEdit->setToolTip(tr("Редактировать метод " ) + actMethodEdit->shortcut().toString()) ;
 
 	}
 //	param_widget->adjustSize();
@@ -622,6 +582,12 @@ void ZrmMethodEditor::switch_edit_widget(bool edit_param)
 //	actNewMethod->setVisible(!edit_param);
 //	actDelete->setVisible(!edit_param);
 //	actCopyModel->setVisible(!edit_param);
+	frToolBar2->setEnabled(!edit_method);
+	frToolBar3->setEnabled(!edit_method);
+	bDelete->setVisible(!edit_method);
+	bCopyModel->setVisible(!edit_method);
+	bCreate->setVisible(!edit_method);
+
 #ifdef Q_OS_ANDROID
 	QWidget* p = parentWidget();
 	while (p->parentWidget())
