@@ -80,7 +80,7 @@ enum zrm_param_t
 	, PARAM_DIN        = 19      // Дискретные входы
 	, PARAM_CCNT       = 20      // Количество элементов МАС АКБ
 
-	, PARAM_ZRMMODE    = 21      // Режим работы (состояние) ЗРМ
+	, PARAM_ZRMMODE    = 21      // Режим работы(состояние) ЗРМ
 	, PARAM_ADDR       = 22      // Адрес ЗРМ
 
 	, PARAM_CALIB_VOLT = 23
@@ -108,7 +108,7 @@ enum zrm_param_t
 	, PARAM_DCNT       = 67  //Кол-во разрядных модулей
 	, PARAM_GCAP       = 68  //Кол-во модулей в группе
 	, PARAM_GCNT       = 69  //Кол-во групп
-//    ,PARAM_FLCFG      = 70   //Биты (флаги) конфигурации
+//    ,PARAM_FLCFG      = 70   //Биты(флаги) конфигурации
 	, PARAM_TRYCT      = 71  //Кол-во попыток запуска
 	, PARAM_RSTTO      = 72  //Таймаут между перезапусками
 	, PARAM_VSTRT      = 73  //Напряжение автозапуска
@@ -122,8 +122,8 @@ enum zrm_param_t
 	, PARAM_DPOW       = 81  //Max. мощность разряда
 	, PARAM_UMAP       = 82  //Карта используемых модулей. Бит0 – модуль вкл/выкл. биты 1-7 – номер ЗРМ
 	, PARAM_SOFT_REV   = 83  //Модификация ПО
-	, PARAM_MOD_DATA   = 84  //Данные установки (расположения) модуля
-	, PARAM_MOD_CHMAP  = 85  //Карта каналов (канал и его адрес)
+	, PARAM_MOD_DATA   = 84  //Данные установки(расположения) модуля
+	, PARAM_MOD_CHMAP  = 85  //Карта каналов(канал и его адрес)
 	, PARAM_MAX_CHP    = 86  //Максимальная мощьность заряда
 
 	, PARAM_RD_EPROM_METHOD = 87
@@ -131,7 +131,7 @@ enum zrm_param_t
 
 	, PARAM_MXCVOLT         = 97  // Макс. напряжение банки
 	, PARAM_MNCVOLT         = 98  //Мин. напряжение банки
-	, PARAM_BTYPE           = 99  //Тип АКБ (0-щелочной 1-кислотный)
+	, PARAM_BTYPE           = 99  //Тип АКБ(0-щелочной 1-кислотный)
 	, PARAM_CELL            = 100  //Параметры элементов АКБ
 
 	, PARAM_METH_EXEC_RESULT = 101   //Результаты выполнения метода
@@ -177,7 +177,7 @@ union session_t
 		session_param.error = (a_error);
 		session_param.ssID = (id);
 	}
-	bool is_active   () const { return session_param.mode != ST_FINISH;}
+	bool is_active() const { return session_param.mode != ST_FINISH;}
 	bool is_read_only() const { return session_param.mode != ST_CONTROL;}
 };
 
@@ -186,9 +186,9 @@ union oper_state_t
 {
 	struct
 	{
-		uint8_t relay_on       : 1; //замкнуть реле (подать нпряжение на выход)
-		uint8_t start_rectifier: 1; //выпрямитель запущен (заряда)
-		uint8_t start_load     : 1; //нагрузка включена (разряда)
+		uint8_t relay_on       : 1; //замкнуть реле(подать нпряжение на выход)
+		uint8_t start_rectifier: 1; //выпрямитель запущен(заряда)
+		uint8_t start_load     : 1; //нагрузка включена(разряда)
 		uint8_t i_stab         : 1; //выпрямитель работает в режиме стабилизации тока
 		uint8_t ctr_stab       : 1; //контролировать режима стабилизации включен
 		uint8_t auto_on        : 1; //автоматическое выполнение метода включено
@@ -217,9 +217,9 @@ struct stage_exec_result_t
 	uint8_t end_cond;    //условия завершения этапа
 	//stage_exec_result_t(){memset(this,0,sizeof(*this));}
 	stage_exec_result_t(const stage_exec_result_t& other) = default;
-	stage_exec_result_t& operator = (const stage_exec_result_t& other) = default;
-	bool operator <  (const stage_exec_result_t& other) const { return stage < other.stage;  }
-	bool operator == (const stage_exec_result_t& other) const { return stage == other.stage; }
+	stage_exec_result_t& operator =(const stage_exec_result_t& other) = default;
+	bool operator <(const stage_exec_result_t& other) const { return stage < other.stage;  }
+	bool operator ==(const stage_exec_result_t& other) const { return stage == other.stage; }
 };
 
 using  lp_stage_exec_result_t = stage_exec_result_t* ;
@@ -260,36 +260,36 @@ struct method_t
 		*this = other;
 	}
 
-	method_t& operator = (const method_t& other)
+	method_t& operator =(const method_t& other)
 	{
 		memcpy(this, &other, sizeof(*this));
 		m_signature = APS_METHOD;
 		return *this;
 	}
 	size_t   name_length() {return m_name[METHOD_NAME_SIZE - 1] ? METHOD_NAME_SIZE : strlen(m_name);}
-	bool     operator    <  (method_t& other) const {return m_id < other.m_id;}
-	bool     operator    == (method_t& other) const {return m_id == other.m_id;}
+	bool     operator    <(method_t& other) const {return m_id < other.m_id;}
+	bool     operator    ==(method_t& other) const {return m_id == other.m_id;}
 	template <typename T>
-	double   value       (T v) const         { return double(v) / pow(10, double(m_factor));}
-	double   current        () const         { return value (m_current ); }
-	double   voltage        () const         { return value (m_voltage ); }
-	double   capacity       () const         { return value (m_capacity); }
+	double   value(T v) const         { return double(v) / pow(10, double(m_factor));}
+	double   current() const         { return value(m_current ); }
+	double   voltage() const         { return value(m_voltage ); }
+	double   capacity() const         { return value(m_capacity); }
 
-	void     set_current    (double value)   { m_current  = uint16_t(value * pow(10, m_factor)); }
-	void     set_voltage    (double value)   { m_voltage  = uint16_t(value * pow(10, m_factor)); }
-	void     set_capacity   (double value)   { m_capacity = uint16_t(value * pow(10, m_factor)); }
-	double   current_ratio  (bool in_percent) { return  (in_percent ? 100.0 : 1.0) * double(m_current) / double(m_capacity);}
-	uint32_t duration       ()const          { return uint32_t(m_hours) * 3600 + uint32_t(m_minutes) * 60 + uint32_t(m_secs);  }
-	void     set_duration   (uint32_t value);
-	int      cycles         () {return int(uint32_t(m_cycles_count));}
-	void     set_cycles     (int val) {m_cycles_count = uint8_t(val);}
-	method_kind_t method_kind   ();
+	void     set_current(double value)   { m_current  = uint16_t(value * pow(10, m_factor)); }
+	void     set_voltage(double value)   { m_voltage  = uint16_t(value * pow(10, m_factor)); }
+	void     set_capacity(double value)   { m_capacity = uint16_t(value * pow(10, m_factor)); }
+	double   current_ratio(bool in_percent) { return (in_percent ? 100.0 : 1.0) * double(m_current) / double(m_capacity);}
+	uint32_t duration()const          { return uint32_t(m_hours) * 3600 + uint32_t(m_minutes) * 60 + uint32_t(m_secs);  }
+	void     set_duration(uint32_t value);
+	int      cycles() {return int(uint32_t(m_cycles_count));}
+	void     set_cycles(int val) {m_cycles_count = uint8_t(val);}
+	method_kind_t method_kind();
 	static   method_hms      secunds2hms(uint32_t duration);
 	static   uint32_t        hms2secunds(const method_hms& hms);
 	static   uint32_t        hms2secunds(uint8_t h, uint8_t m, uint8_t s);
 	static   double          max_voltage() {return 1000;}
 	static   double          max_capacity() {return 1000;}
-	static   double          value_step  () {return 0.1; }
+	static   double          value_step() {return 0.1; }
 
 };
 
@@ -354,45 +354,45 @@ struct stage_t
 
 	stage_t()
 	{
-		memset(this, 0, sizeof (*this));
+		memset(this, 0, sizeof(*this));
 		m_signature = APS_STAGE;
 	}
 
-	bool operator <  (const stage_t& other) const {return m_number <  other.m_number;}
-	bool operator == (const stage_t& other) const {return m_number == other.m_number;}
+	bool operator <(const stage_t& other) const {return m_number <  other.m_number;}
+	bool operator ==(const stage_t& other) const {return m_number == other.m_number;}
 
-	double charge_volt    (double base            ) const {return base * double(m_char_volt    ) / stage_percent;}
-	double charge_volt    (const method_t& ms    ) const {return charge_volt(ms.voltage());}
+	double charge_volt(double base            ) const {return base * double(m_char_volt    ) / stage_percent;}
+	double charge_volt(const method_t& ms    ) const {return charge_volt(ms.voltage());}
 
-	double charge_curr    (double base            ) const {return base * double(m_char_curr     ) / stage_percent;}
-	double charge_curr    (const method_t& ms    ) const {return charge_curr(ms.current());}
+	double charge_curr(double base            ) const {return base * double(m_char_curr     ) / stage_percent;}
+	double charge_curr(const method_t& ms    ) const {return charge_curr(ms.current());}
 
-	double discharge_volt (double base            ) const {return base * double(m_dis_volt     ) / stage_percent;}
-	double discharge_volt (const method_t& ms    ) const {return discharge_volt(ms.voltage());}
+	double discharge_volt(double base            ) const {return base * double(m_dis_volt     ) / stage_percent;}
+	double discharge_volt(const method_t& ms    ) const {return discharge_volt(ms.voltage());}
 
-	double discharge_curr (double base            ) const {return base * double(m_dis_curr      ) / stage_percent;}
-	double discharge_curr (const method_t& ms    ) const {return discharge_curr(ms.current());}
+	double discharge_curr(double base            ) const {return base * double(m_dis_curr      ) / stage_percent;}
+	double discharge_curr(const method_t& ms    ) const {return discharge_curr(ms.current());}
 
-	double end_curr       (double base            ) const {return base * double(m_end_cur      ) / stage_percent;}
-	double end_curr       (const method_t& ms    ) const {return end_curr(ms.current());}
+	double end_curr(double base            ) const {return base * double(m_end_cur      ) / stage_percent;}
+	double end_curr(const method_t& ms    ) const {return end_curr(ms.current());}
 
-	double end_volt       (double base            ) const {return base * double(m_end_volt     ) / stage_percent;}
-	double end_volt       (const method_t& ms    ) const {return end_volt(ms.voltage());}
+	double end_volt(double base            ) const {return base * double(m_end_volt     ) / stage_percent;}
+	double end_volt(const method_t& ms    ) const {return end_volt(ms.voltage());}
 
-	double end_delta_volt (double base            ) const {return base * double(m_end_delta_volt) / stage_percent;}
-	double end_delta_volt (const method_t& ms    ) const {return end_delta_volt(ms.voltage());}
+	double end_delta_volt(double base            ) const {return base * double(m_end_delta_volt) / stage_percent;}
+	double end_delta_volt(const method_t& ms    ) const {return end_delta_volt(ms.voltage());}
 
-	double end_capacity   (double base            ) const {return base * double(m_end_cap      ) / stage_percent;}
-	double end_capacity   (const method_t& ms    ) const {return end_capacity(ms.capacity());}
+	double end_capacity(double base            ) const {return base * double(m_end_cap      ) / stage_percent;}
+	double end_capacity(const method_t& ms    ) const {return end_capacity(ms.capacity());}
 
-	double end_temp       () const           {return m_end_temper   / stage_precision2;}
-	double end_cell_volt  () const           {return m_end_elem_volt / stage_precision2;}
+	double end_temp() const           {return m_end_temper   / stage_precision2;}
+	double end_cell_volt() const           {return m_end_elem_volt / stage_precision2;}
 
-	void set_charge_volt   (double value, double base  )  { m_char_volt = uint16_t(stage_percent * value / base) ;}
-	void set_charge_volt   (double value, method_t& ms)  { set_charge_volt(value, ms.voltage());}
+	void set_charge_volt(double value, double base  )  { m_char_volt = uint16_t(stage_percent * value / base) ;}
+	void set_charge_volt(double value, method_t& ms)  { set_charge_volt(value, ms.voltage());}
 
-	void set_charge_curr   (double value, double base   )  { m_char_curr = uint16_t(stage_percent * value / base) ;}
-	void set_charge_curr   (double value,  method_t& ms)  { set_charge_curr(value, ms.current());}
+	void set_charge_curr(double value, double base   )  { m_char_curr = uint16_t(stage_percent * value / base) ;}
+	void set_charge_curr(double value,  method_t& ms)  { set_charge_curr(value, ms.current());}
 
 	void set_discharge_volt(double value, double base   )  { m_dis_volt = uint16_t(stage_percent * value / base) ;}
 	void set_discharge_volt(double value,  method_t& ms)  { set_discharge_volt(value, ms.voltage());}
@@ -400,28 +400,28 @@ struct stage_t
 	void set_discharge_curr(double value, double base   )   { m_dis_curr = uint16_t(stage_percent * value / base) ;}
 	void set_discharge_curr(double value,  method_t& ms)  { set_discharge_curr(value, ms.current());}
 
-	void set_end_curr      (double value, double base   )  { m_end_cur = uint16_t(stage_percent * value / base) ;}
-	void set_end_curr      (double value,  method_t& ms)  { set_end_curr(value, ms.current());}
+	void set_end_curr(double value, double base   )  { m_end_cur = uint16_t(stage_percent * value / base) ;}
+	void set_end_curr(double value,  method_t& ms)  { set_end_curr(value, ms.current());}
 
-	void set_end_volt      (double value, double base   )  { m_end_volt = uint16_t(stage_percent * value / base) ;}
-	void set_end_volt      (double value,  method_t& ms)  { set_end_volt(value, ms.voltage());}
+	void set_end_volt(double value, double base   )  { m_end_volt = uint16_t(stage_percent * value / base) ;}
+	void set_end_volt(double value,  method_t& ms)  { set_end_volt(value, ms.voltage());}
 
 	void set_end_delta_volt(double value, double base   )  { m_end_delta_volt = uint16_t(stage_percent * value / base) ;}
 	void set_end_delta_volt(double value,  method_t& ms)  { set_end_delta_volt(value, ms.voltage());}
 
-	void set_end_capacity  (double value, double base   )  { m_end_cap  = uint16_t(stage_percent * value / base) ;}
-	void set_end_capacity  (double value,  method_t& ms)  { set_end_capacity(value, ms.capacity());}
+	void set_end_capacity(double value, double base   )  { m_end_cap  = uint16_t(stage_percent * value / base) ;}
+	void set_end_capacity(double value,  method_t& ms)  { set_end_capacity(value, ms.capacity());}
 
-	void set_end_temp      (double value )            { m_end_temper    = uint16_t(value * stage_precision2);}
-	void set_end_cell_volt (double value )            { m_end_elem_volt = uint16_t(value * stage_precision2 );}
-	bool is_charge         () const {return m_type & static_cast<uint8_t>(STT_CHARGE);}
-	bool is_discharge      () const {return m_type & static_cast<uint8_t>(STT_DISCHARGE);}
-	bool is_pause          () const {return m_type == STT_PAUSE;}
-	bool is_impulse        () const {return m_type == STT_IMPULSE;}
+	void set_end_temp(double value )            { m_end_temper    = uint16_t(value * stage_precision2);}
+	void set_end_cell_volt(double value )            { m_end_elem_volt = uint16_t(value * stage_precision2 );}
+	bool is_charge() const {return m_type & static_cast<uint8_t>(STT_CHARGE);}
+	bool is_discharge() const {return m_type & static_cast<uint8_t>(STT_DISCHARGE);}
+	bool is_pause() const {return m_type == STT_PAUSE;}
+	bool is_impulse() const {return m_type == STT_IMPULSE;}
 
-	const char* stage_type_name (zrm_work_mode_t work_mode )
-	{ return stage_type_name(work_mode, stage_type_t (m_type) );}
-	static const char* stage_type_name (zrm_work_mode_t work_mode, stage_type_t stage_type  );
+	const char* stage_type_name(zrm_work_mode_t work_mode )
+	{ return stage_type_name(work_mode, stage_type_t(m_type) );}
+	static const char* stage_type_name(zrm_work_mode_t work_mode, stage_type_t stage_type  );
 
 	static const char* st_types_power  [4] ;
 	static const char* st_types_charger[4] ;
@@ -447,7 +447,7 @@ struct zrm_cell_t
 	zrm_cell_t() {m_volt = m_temp = m_cap = 0;}
 	double     volt() {return double(m_volt) / stage_precision2;}
 	double     temp() {return double(m_temp) / stage_precision2;}
-	double     cap () {return double(m_cap ) / stage_precision1;}
+	double     cap() {return double(m_cap ) / stage_precision1;}
 };
 
 typedef       zrm_cell_t* lp_zrm_cell_t;
@@ -492,9 +492,9 @@ template <typename T>
 param_variant init_variant(T value)
 {
 	param_variant pv;
-	pv.size =  sizeof (value);
+	pv.size =  sizeof(value);
 	if (pv.size > sizeof(pv.puchar) )
-		pv.size = sizeof (pv.puchar);
+		pv.size = sizeof(pv.puchar);
 	memcpy(pv.puchar,  &value, pv.size);
 	return pv;
 }
@@ -503,9 +503,9 @@ template <typename T>
 param_variant init_variant(T* value, int cnt)
 {
 	param_variant pv;
-	pv.size =  sizeof (*value) * cnt;
+	pv.size =  sizeof(*value) * cnt;
 	if (pv.size > sizeof(pv.puchar) )
-		pv.size = sizeof (pv.puchar);
+		pv.size = sizeof(pv.puchar);
 	memcpy(pv.puchar,  value, pv.size);
 	return pv;
 }
@@ -544,9 +544,9 @@ class   send_buffer_t : public _send_buffer_t
 public:
 
 	explicit send_buffer_t(size_t sz = 1024): _send_buffer_t(sz) {}
-	size_t   queue_packet         (uint16_t channel, uint8_t packet_type, uint16_t data_size, const void* data = nullptr );
-	size_t   queue_request        (uint16_t channel,  const devproto::storage_t& param_list);
-	uint16_t session_id   ();
+	size_t   queue_packet(uint16_t channel, uint8_t packet_type, uint16_t data_size, const void* data = nullptr );
+	size_t   queue_request(uint16_t channel,  const devproto::storage_t& param_list);
+	uint16_t session_id();
 	void     set_sesion_id(uint16_t session_id);
 	uint16_t packet_number();
 	void     set_packet_number(uint16_t pn);
@@ -573,14 +573,14 @@ inline void     method_t::set_duration(uint32_t value)
 	m_secs    = uint8_t(ms.rem);
 }
 
-inline method_kind_t method_t::method_kind   ()
+inline method_kind_t method_t::method_kind()
 {
 	if (m_id)
 		return m_id == uint16_t(-1) ? method_kind_unknown : method_kind_automatic;
 	return method_kind_manual;
 }
 
-inline uint16_t send_buffer_t::session_id   ()
+inline uint16_t send_buffer_t::session_id()
 {
 	return m_session_id;
 }
@@ -601,17 +601,17 @@ inline void     send_buffer_t::set_packet_number(uint16_t pn)
 }
 
 inline proto_header::proto_header(uint16_t _session_id, uint16_t _number, uint16_t _channel, uint8_t _type)
-	: session_id   (_session_id)
+	: session_id(_session_id)
 	, packet_number(_number    )
-	, channel      (_channel   )
-	, type         (_type      )
+	, channel(_channel   )
+	, type(_type      )
 
 {}
 
 template <typename _Type>
 void  send_buffer_t::params_add(devproto::storage_t& data, param_write_mode_t wm, zrm_param_t  param, _Type value)
 {
-	params_add(data, wm, param, sizeof (value), &value);
+	params_add(data, wm, param, sizeof(value), &value);
 }
 
 

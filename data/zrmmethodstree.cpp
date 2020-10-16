@@ -29,7 +29,6 @@ private:
 	ZrmMethodsTree*   m_methods_tree = Q_NULLPTR;
 };
 
-
 QWidget* mtree_item_delegate::createEditor(QWidget* parent,
 										   const QStyleOptionViewItem& option,
 										   const QModelIndex& index) const
@@ -88,7 +87,6 @@ void mtree_item_delegate::setModelData(QWidget* editor, QAbstractItemModel* mode
 	}
 	else
 		QItemDelegate::setModelData(editor, model, index);
-
 }
 
 ZrmMethodsTree::ZrmMethodsTree(QWidget* parent) :
@@ -110,8 +108,6 @@ ZrmMethodsTree::~ZrmMethodsTree()
 {
 	close_database();
 }
-
-
 
 QItemDelegate* ZrmMethodsTree::create_delegate()
 {
@@ -182,7 +178,6 @@ void  ZrmMethodsTree::save_user_values()
 	}
 }
 
-
 void      ZrmMethodsTree::remove_children   (QTreeWidgetItem* parent, bool one_retain)
 {
 	QSignalBlocker sb(parent->treeWidget());
@@ -223,7 +218,6 @@ void ZrmMethodsTree::fill_tree()
 	else
 		read_types();
 }
-
 
 QString   ZrmMethodsTree::get_stage_desctipt(unsigned stage_id)
 {
@@ -393,10 +387,8 @@ bool ZrmMethodsTree::read_method(QTreeWidgetItem* item)
 	return ret;
 }
 
-
 void ZrmMethodsTree::read_methods(QTreeWidgetItem* model_item)
 {
-
 	if (model_item)
 	{
 		remove_children(model_item, false);

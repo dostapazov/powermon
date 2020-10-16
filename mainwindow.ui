@@ -77,7 +77,7 @@
        <enum>QFrame::Raised</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="ZrmReadyWidget" name="zrm_ready"/>
       <widget class="QWidget" name="zrm_view">
@@ -688,8 +688,8 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="powermon.qrc"/>
   <include location="zrm/zrm_resource.qrc"/>
+  <include location="powermon.qrc"/>
  </resources>
  <connections>
   <connection>

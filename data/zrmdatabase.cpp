@@ -10,7 +10,7 @@ ZrmDatabase::ZrmDatabase(QObject* parent) : QObject(parent)
 
 constexpr const char* transact_prop =  "trans_active";
 
-int ZrmDatabase::start_transaction   (QSqlDatabase& db)
+int ZrmDatabase::start_transaction(QSqlDatabase& db)
 {
 	int trans_counter = 0;
 	if (db.isOpen())
@@ -42,7 +42,7 @@ void ZrmDatabase::rollback_transaction(QSqlDatabase& db)
 	}
 }
 
-bool ZrmDatabase::commit_transaction  (QSqlDatabase& db, bool force)
+bool ZrmDatabase::commit_transaction(QSqlDatabase& db, bool force)
 {
 	if (db.isOpen())
 	{
@@ -64,7 +64,7 @@ bool ZrmDatabase::commit_transaction  (QSqlDatabase& db, bool force)
 	return false;
 }
 
-bool ZrmDatabase::transaction_active  (QSqlDatabase& db)
+bool ZrmDatabase::transaction_active(QSqlDatabase& db)
 {
 	int trans_counter = 0;
 	if (db.isOpen())
@@ -75,7 +75,7 @@ bool ZrmDatabase::transaction_active  (QSqlDatabase& db)
 	return trans_counter;
 }
 
-bool ZrmDatabase::skip_empty      (QSqlQuery& query, int index )
+bool ZrmDatabase::skip_empty(QSqlQuery& query, int index )
 {
 	bool ret = !query.isNull(index);
 	while (!ret)
@@ -100,7 +100,7 @@ bool ZrmDatabase::exec_query(QSqlQuery& query, const QString& query_text, const 
 	return false;
 }
 
-bool ZrmDatabase::exec_write (QSqlDatabase& db, QSqlQuery& query, const QString& qtext, query_args_t& args)
+bool ZrmDatabase::exec_write(QSqlDatabase& db, QSqlQuery& query, const QString& qtext, query_args_t& args)
 {
 	bool ret = false;
 	if (transaction_active(db) || start_transaction(db))
@@ -119,7 +119,7 @@ bool ZrmDatabase::exec_write (QSqlDatabase& db, QSqlQuery& query, const QString&
 	return ret;
 }
 
-QSqlQuery ZrmDatabase::read_model_methods  (QSqlDatabase& db, const QVariant& model_id)
+QSqlQuery ZrmDatabase::read_model_methods(QSqlDatabase& db, const QVariant& model_id)
 {
 	QString qtext =
 		"select m.id  , m.c_name, m.n_volt_rate, m.n_current_rate"
@@ -138,7 +138,7 @@ QSqlQuery ZrmDatabase::read_model_methods  (QSqlDatabase& db, const QVariant& mo
 
 }
 
-QSqlQuery ZrmDatabase::read_method       (QSqlDatabase& db, const QVariant& id )
+QSqlQuery ZrmDatabase::read_method(QSqlDatabase& db, const QVariant& id )
 {
 
 	QString qtext =
@@ -153,7 +153,7 @@ QSqlQuery ZrmDatabase::read_method       (QSqlDatabase& db, const QVariant& id )
 	return query;
 }
 
-QSqlQuery ZrmDatabase::read_all_methods       (QSqlDatabase& db )
+QSqlQuery ZrmDatabase::read_all_methods(QSqlDatabase& db )
 {
 	QSqlQuery query(db);
 	QString qtext =
@@ -165,7 +165,7 @@ QSqlQuery ZrmDatabase::read_all_methods       (QSqlDatabase& db )
 	return query;
 }
 
-bool ZrmDatabase::read_method       (QSqlDatabase& db, const QVariant& id, zrm::method_t& result, double voltage, double capacity)
+bool ZrmDatabase::read_method(QSqlDatabase& db, const QVariant& id, zrm::method_t& result, double voltage, double capacity)
 {
 	result = zrm::method_t();
 	QSqlQuery query = read_method(db, id );
@@ -173,15 +173,15 @@ bool ZrmDatabase::read_method       (QSqlDatabase& db, const QVariant& id, zrm::
 	{
 		double coeff;
 		result.m_id = uint16_t(query.value(0).toUInt());
-		result.set_capacity   (capacity);
+		result.set_capacity(capacity);
 		if (qFuzzyIsNull(voltage))
 			voltage = 1.0;
 
 		coeff = query.value(2).toDouble();
-		result.set_voltage    (voltage * coeff);
+		result.set_voltage(voltage * coeff);
 		coeff = query.value(3).toDouble();
-		result.set_current    (capacity * coeff);
-		result.set_duration   (query.value(4).toUInt());
+		result.set_current(capacity * coeff);
+		result.set_duration(query.value(4).toUInt());
 		result.m_cycles_count = uint8_t(query.value(5).toUInt());
 		QString name = query.value(1).toString();
 		QByteArray name_array;
@@ -189,7 +189,7 @@ bool ZrmDatabase::read_method       (QSqlDatabase& db, const QVariant& id, zrm::
 			name_array = m_codec->fromUnicode(name);
 		else
 			name_array = name.toLocal8Bit();
-		memset(result.m_name, 0, sizeof (result.m_name));
+		memset(result.m_name, 0, sizeof(result.m_name));
 		memcpy(result.m_name, name_array.constData(), qMin(sizeof(result.m_name), size_t(name_array.size())));
 
 		return true;
@@ -243,31 +243,31 @@ bool ZrmDatabase::read_method_stages(QSqlDatabase& db, const QVariant& m_id, zrm
 		{
 			zrm::stage_t stage;
 
-			stage.m_id_method = uint16_t (rec.value(0).toUInt() );//ID - этапа см. ZrmConnectivity::write_method;
-			stage.m_type      = uint8_t  (rec.value(1).toUInt() );
-			stage.m_number    = uint8_t  (rec.value(2).toUInt() );
+			stage.m_id_method = uint16_t(rec.value(0).toUInt() );//ID - этапа см. ZrmConnectivity::write_method;
+			stage.m_type      = uint8_t(rec.value(1).toUInt() );
+			stage.m_number    = uint8_t(rec.value(2).toUInt() );
 
-			stage.set_charge_volt        (rec.value(3).toDouble(), 1.0);
-			stage.set_charge_curr        (rec.value(4).toDouble(), 1.0);
-			stage.set_discharge_volt     (rec.value(5).toDouble(), 1.0);
-			stage.set_discharge_curr     (rec.value(6).toDouble(), 1.0);
+			stage.set_charge_volt(rec.value(3).toDouble(), 1.0);
+			stage.set_charge_curr(rec.value(4).toDouble(), 1.0);
+			stage.set_discharge_volt(rec.value(5).toDouble(), 1.0);
+			stage.set_discharge_curr(rec.value(6).toDouble(), 1.0);
 
 			stage.m_char_time   = uint8_t(rec.value(7).toUInt());
 			stage.m_dis_time    = uint8_t(rec.value(8).toUInt());
 			stage.m_finish_flags    = uint8_t(rec.value(9).toUInt());
 
-			stage.set_end_volt           (rec.value(10).toDouble(), 1.0);
-			stage.set_end_curr           (rec.value(11).toDouble(), 1.0);
-			stage.set_end_capacity       (rec.value(12).toDouble(), 1.0);
-			stage.set_end_delta_volt     (rec.value(13).toDouble(), 1.0);
-			stage.set_end_temp           (rec.value(14).toDouble());
+			stage.set_end_volt(rec.value(10).toDouble(), 1.0);
+			stage.set_end_curr(rec.value(11).toDouble(), 1.0);
+			stage.set_end_capacity(rec.value(12).toDouble(), 1.0);
+			stage.set_end_delta_volt(rec.value(13).toDouble(), 1.0);
+			stage.set_end_temp(rec.value(14).toDouble());
 
 			auto hms = zrm::method_t::secunds2hms(rec.value(15).toUInt());
 			stage.m_hours   = std::get<0>(hms);
 			stage.m_minutes = std::get<1>(hms);
 			stage.m_secs    = std::get<2>(hms);
 
-			stage.set_end_cell_volt      (rec.value(16).toDouble());
+			stage.set_end_cell_volt(rec.value(16).toDouble());
 
 			stage.m_stage_flags = uint8_t(rec.value(17).toUInt());
 			result.push_back(stage);
@@ -307,8 +307,8 @@ bool ZrmDatabase::link_method(QSqlDatabase& db, const QVariant& method_id, const
 {
 	start_transaction(db);
 	QString qtext =
-		"INSERT INTO tl_model_method (id_model,id_method) "
-		"VALUES (:id_model, :id_method) ";
+		"INSERT INTO tl_model_method(id_model,id_method) "
+		"VALUES(:id_model, :id_method) ";
 	query_args_t args;
 	args[":id_model" ] = model_id;
 	args[":id_method"] = method_id;
@@ -344,7 +344,7 @@ bool ZrmDatabase::unlink_method(QSqlDatabase& db, const QVariant& method_id, con
 }
 
 
-bool ZrmDatabase::erase_method      (QSqlDatabase& db, const QVariant& method_id)
+bool ZrmDatabase::erase_method(QSqlDatabase& db, const QVariant& method_id)
 {
 	if (erase_stages(db, method_id))
 	{
@@ -357,7 +357,7 @@ bool ZrmDatabase::erase_method      (QSqlDatabase& db, const QVariant& method_id
 	return false;
 }
 
-bool ZrmDatabase::erase_stages      (QSqlDatabase& db, const QVariant& method_id )
+bool ZrmDatabase::erase_stages(QSqlDatabase& db, const QVariant& method_id )
 {
 	QSqlQuery query(db);
 	QString qtext = "DELETE FROM t_stage  WHERE id_method = :id_method ";
@@ -367,7 +367,7 @@ bool ZrmDatabase::erase_stages      (QSqlDatabase& db, const QVariant& method_id
 
 }
 
-bool ZrmDatabase::erase_stages      (QSqlDatabase& db, zrm::stages_t& stages)
+bool ZrmDatabase::erase_stages(QSqlDatabase& db, zrm::stages_t& stages)
 {
 	bool ret = true;
 	for (zrm::stage_t& st : stages)
@@ -380,7 +380,7 @@ bool ZrmDatabase::erase_stages      (QSqlDatabase& db, zrm::stages_t& stages)
 	return ret;
 }
 
-bool ZrmDatabase::erase_stage       (QSqlDatabase& db, const QVariant& stage_id)
+bool ZrmDatabase::erase_stage(QSqlDatabase& db, const QVariant& stage_id)
 {
 	QSqlQuery query(db);
 	QString qtext = "DELETE FROM t_stage  WHERE id = :id ";
@@ -389,7 +389,7 @@ bool ZrmDatabase::erase_stage       (QSqlDatabase& db, const QVariant& stage_id)
 	return exec_write(db, query, qtext, args);
 }
 
-bool ZrmDatabase::wrte_method_uservals (QSqlDatabase& db, const QVariant& method_id, const QVariant& user_volt, const QVariant& user_capacity, bool commit_trans)
+bool ZrmDatabase::wrte_method_uservals(QSqlDatabase& db, const QVariant& method_id, const QVariant& user_volt, const QVariant& user_capacity, bool commit_trans)
 {
 	bool ret = false;
 	if (!is_null_id(method_id))
@@ -413,15 +413,15 @@ bool ZrmDatabase::wrte_method_uservals (QSqlDatabase& db, const QVariant& method
 }
 
 
-bool ZrmDatabase::wrte_method       (QSqlDatabase& db, QVariant& method_id, const QString& method_name
-									 , zrm::zrm_method_t& method
-									)
+bool ZrmDatabase::wrte_method(QSqlDatabase& db, QVariant& method_id, const QString& method_name
+							  , zrm::zrm_method_t& method
+							 )
 {
 	bool is_new = is_null_id(method_id);
 	QString qtext =
 		is_new ?
-		"INSERT INTO t_method (id, c_name,  n_volt_rate, n_current_rate, n_duration, n_cycle_count  ) "
-		"              VALUES (:id, :name,:volt_rate,:current_rate,:duration,:cycle_count) "
+		"INSERT INTO t_method(id, c_name,  n_volt_rate, n_current_rate, n_duration, n_cycle_count  ) "
+		"              VALUES(:id, :name,:volt_rate,:current_rate,:duration,:cycle_count) "
 
 		:
 		"UPDATE t_method SET "
@@ -450,7 +450,7 @@ bool ZrmDatabase::wrte_method       (QSqlDatabase& db, QVariant& method_id, cons
 	return false;
 }
 
-bool ZrmDatabase::write_stages      (QSqlDatabase& db, QVariant& method_id, zrm::stages_t& stages, zrm::stages_t& remove_stages )
+bool ZrmDatabase::write_stages(QSqlDatabase& db, QVariant& method_id, zrm::stages_t& stages, zrm::stages_t& remove_stages )
 {
 	if (remove_stages.size() && !erase_stages(db, remove_stages))
 	{
@@ -466,7 +466,7 @@ bool ZrmDatabase::write_stages      (QSqlDatabase& db, QVariant& method_id, zrm:
 	return true;
 }
 
-bool ZrmDatabase::write_stage       (QSqlDatabase& db, QVariant& method_id, zrm::stage_t&   stage)
+bool ZrmDatabase::write_stage(QSqlDatabase& db, QVariant& method_id, zrm::stage_t&   stage)
 {
 	bool ret = false;
 	QString upd_text =
@@ -479,12 +479,12 @@ bool ZrmDatabase::write_stage       (QSqlDatabase& db, QVariant& method_id, zrm:
 		;
 
 	QString ins_text =
-		" INSERT INTO t_stage ("
+		" INSERT INTO t_stage("
 		"                      id, id_method, id_type, n_pos, n_ch_volt_rate, n_dis_volt_rate, n_ch_cur_rate, n_dis_cur_rate, n_ch_duration,"
 		"                      n_dis_duration, n_finish_flags, n_finish_voltage_rate, n_finish_current_rate, n_finish_capacity_rate, "
 		"                      n_finish_delta_volt_rate, n_finish_temper, n_finish_duration, n_finish_cell_volt, n_stage_flags"
 		"                      )"
-		"             VALUES ( "
+		"             VALUES( "
 		"                     :id,:id_method,:id_type,:pos,:ch_volt_rate,:dis_volt_rate,:ch_cur_rate, :dis_cur_rate,:ch_duration, "
 		"                     :dis_duration,:finish_flags,:finish_voltage_rate,:finish_current_rate,:finish_capacity_rate, "
 		"                     :finish_delta_volt_rate,:finish_temper,:finish_duration,:finish_cell_volt, :stage_flags "
@@ -506,7 +506,7 @@ bool ZrmDatabase::write_stage       (QSqlDatabase& db, QVariant& method_id, zrm:
 	args[":pos"    ]       = stage.m_number;
 	args[":ch_volt_rate"]  = stage.charge_volt(1.0);
 	args[":dis_volt_rate"] = stage.discharge_volt(1.0);
-	args[":ch_cur_rate"]   = stage.charge_curr   (1.0);
+	args[":ch_cur_rate"]   = stage.charge_curr(1.0);
 	args[":dis_cur_rate"]  = stage.discharge_curr(1.0);
 	args[":ch_duration"]   = stage.m_char_time;
 	args[":dis_duration"]  = stage.m_dis_time;
@@ -530,12 +530,12 @@ bool ZrmDatabase::write_stage       (QSqlDatabase& db, QVariant& method_id, zrm:
 }
 
 
-bool ZrmDatabase::write_type (QSqlDatabase& db, QVariant& id, const QString& type_name )
+bool ZrmDatabase::write_type(QSqlDatabase& db, QVariant& id, const QString& type_name )
 {
 	bool ret = false;
 	start_transaction(db);
 	bool is_new = is_null_id(id);
-	QString   qtext = is_new ?  "insert into t_akb_type (id, c_name) values (:id,:name)" : "update t_akb_type set c_name = :name where id = :id";
+	QString   qtext = is_new ?  "insert into t_akb_type(id, c_name) values(:id,:name)" : "update t_akb_type set c_name = :name where id = :id";
 
 	query_args_t args;
 	args[":name"] = type_name;
@@ -552,7 +552,7 @@ bool ZrmDatabase::write_type (QSqlDatabase& db, QVariant& id, const QString& typ
 	return ret;
 }
 
-bool ZrmDatabase::erase_model        (QSqlDatabase& db, const QVariant& id, bool commit_trans)
+bool ZrmDatabase::erase_model(QSqlDatabase& db, const QVariant& id, bool commit_trans)
 {
 	bool ret = false;
 	start_transaction(db);
@@ -571,7 +571,7 @@ bool ZrmDatabase::erase_model        (QSqlDatabase& db, const QVariant& id, bool
 	return ret;
 }
 
-bool ZrmDatabase::erase_type        (QSqlDatabase& db, const QVariant& id, bool commit_trans)
+bool ZrmDatabase::erase_type(QSqlDatabase& db, const QVariant& id, bool commit_trans)
 {
 	start_transaction(db);
 	QString qtext = "delete from t_akb_type where id = :id";
@@ -585,13 +585,13 @@ bool ZrmDatabase::erase_type        (QSqlDatabase& db, const QVariant& id, bool 
 }
 
 
-bool ZrmDatabase::write_model         (QSqlDatabase& db, QVariant id_type, QVariant& id, const QString& name, double voltage, double capacity, bool commit_trans)
+bool ZrmDatabase::write_model(QSqlDatabase& db, QVariant id_type, QVariant& id, const QString& name, double voltage, double capacity, bool commit_trans)
 {
 	bool ret = false;
 	start_transaction(db);
 	bool is_new = is_null_id(id);
 	QString   qtext = is_new ?
-					  "INSERT INTO t_model ( c_name, id_type, n_voltage, n_capacity ) VALUES (:name, :id_type, :voltage, :capacity );"
+					  "INSERT INTO t_model( c_name, id_type, n_voltage, n_capacity ) VALUES(:name, :id_type, :voltage, :capacity );"
 					  :
 					  "UPDATE t_model  SET  c_name = :name, id_type = :id_type, n_voltage = :voltage, n_capacity = :capacity WHERE id = :id";
 

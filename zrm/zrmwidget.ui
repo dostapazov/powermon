@@ -497,7 +497,7 @@
          <enum>QFrame::Sunken</enum>
         </property>
         <property name="currentIndex">
-         <number>5</number>
+         <number>1</number>
         </property>
         <widget class="ZrmReport" name="zrm_report">
          <property name="sizePolicy">
